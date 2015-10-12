@@ -1,0 +1,42 @@
+/**
+ * Swibe menu
+ * https://github.com/barcia/swibe-menu
+ * Made in Galicia by Iván Barcia | @bartzia | ivanbarcia.eu
+ */
+
+//Variables
+$menuWidth: 300px;
+$animationTime: 200ms; //Also in swibe.js
+
+.swibe-menu {
+  position: fixed;
+  top: 0;
+  left: -$menuWidth;
+  height: 100%;
+  width: $menuWidth;
+  z-index: 99;
+  will-change: transform;
+  transition: transform $animationTime ease-in-out ;
+  overflow-y: auto;
+
+  &.open {
+    transform: translateX($menuWidth);
+  }
+}
+
+.swibe-shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  will-change: opacity;
+  transition: opacity $animationTime ease-in-out ;
+  background-color: black;
+  z-index: 98;
+
+  &.enabled {
+    opacity: 0.6;
+  }
+}
