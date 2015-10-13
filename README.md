@@ -5,7 +5,7 @@ A simple slide and swipe menu in CSS and JavaScript.
 * [Download](https://github.com/barcia/swibe-menu/archive/master.zip)
 * [Support](https://plus.google.com/communities/104938291205143609131/stream/8879dc2d-fed4-43a4-ba36-eca77af7d9db)
 * [Trello](https://trello.com/c/Dzw5LscX)
-* [Changelog](https://github.com/barcia/js-slidx/commits/master)
+* [Changelog](https://github.com/barcia/swibe-menu/commits/master)
 * [License](LICENSE)
 
 ## Description
@@ -15,20 +15,20 @@ If you change default parameters in .css or .js, be sure that you make the chang
 
 ## Getting Started
 
-1. Add `slidx.js` and `slidx.css` to your webpage.
+1. Add `swibe.js` and `swibe.css` to your webpage.
 
 ```html
 <link rel="stylesheet" href="swibe.css">
 <script type="text/javascript" src="swibe.js"></script>
 ```
 
-2. Add **id** `slibe-menu-button` to the element who will open the menu.
+2. Add **id** `swibe-menu-button` to the element who will open the menu.
 
 ```html
 <span id="swibe-menu-button">Menu</span>
 ```
 
-3. Add **id** `slibe-menu` and **class** `slibe-menu` to the element who will contain the menu (recommends `nav`).
+3. Add **id** `swibe-menu` and **class** `swibe-menu` to the element who will contain the menu (recommends `nav`).
 
 ```html
 <nav class="swibe-menu" id="swibe-menu">
