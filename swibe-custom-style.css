@@ -1,8 +1,8 @@
-/* ADD HERE YOUR CSS */
+/* This CSS code isn't necesary, but all looks better, add here your CSS */
 
 .swibe-menu {
   background-color: white;
-} 
+}
 
 .swibe-menu ul {
   padding: 8px 0;
@@ -14,7 +14,6 @@
   display: block;
   line-height: 48px;
   padding: 0 16px;
-  vertical-align: middle;
   text-decoration: none;
   color: inherit;
 }

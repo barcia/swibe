@@ -1,7 +1,7 @@
 /**
  * Swibe menu
  * https://github.com/barcia/swibe-menu
- * Made in Galicia by Iván Barcia | @bartzia | ivanbarcia.eu
+ * Made in Galicia by Iván Barcia | @bartzia | barcia.cc
  */
 
 "use strict";

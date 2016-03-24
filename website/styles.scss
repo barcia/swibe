@@ -1,0 +1,212 @@
+* {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-image: url(img/forest.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1, h3, p {
+  cursor: default;
+}
+
+.title, .subtitle {
+  color: white;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  opacity: 0.5;
+  font-weight: 100;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.buttons {
+  padding-top: 10px;
+  
+  button {
+    @media (max-width: 550px) {
+      width: 80%;
+    }
+  }
+}
+
+.swibe-button {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  z-index: 80;
+}
+
+.swibe-menu {
+  background-color: white;
+}
+
+
+.touch-tap, .touch-swipe {
+  position: fixed;
+  width: 100px;
+  z-index: 70;
+  @media (max-width: 550px) {
+    width: 50px;
+  }
+}
+
+.touch-tap {
+  top: 40px;
+  left: 20px;
+}
+
+.touch-swipe {
+  bottom: 40px;
+  left: 0;
+}
+
+
+main {
+  text-align: center;
+  width: 100%;
+}
+
+button {
+  background-color: #363636;
+  color: white;
+  border: 5px solid #363636;
+  padding: 10px 30px;
+  margin: 5px;
+  padding-left: 25px;
+  font-size: 1.2rem;
+  font-weight: 100;
+  text-transform: capitalize;
+  transition: border-radius 300ms ease-in-out;
+  &:hover {
+    cursor: pointer;
+    border-radius: 0px;
+  }
+  &:focus, &:active {
+    outline: 0;
+  }
+}
+
+.button-blank {
+  background-color: transparent;
+}
+
+@mixin animation ($name, $duration, $function: ease-in-out, $delay: 0s, $count: infinite, $direction: alternate, $play-state: running) {
+  animation-name: $name;
+  animation-duration: $duration; //En segundos
+  animation-timing-function: $function; //(http://goo.gl/2rbYlE  |  http://goo.gl/3btZHf)
+  animation-delay: $delay; //Tiempo que tarda en empezar la animación. En segundos
+  animation-iteration-count: $count; //Numero de veces que se realiza la animación
+  animation-direction: $direction; //Indica como se debe reproducir la animación 'normal', 'reverte', 'alternate'
+  animation-play-state: $play-state; //Estado de la animación 'running' o 'paused'
+}
+
+.button-download:hover {
+  img {
+    @include animation (laught, 200ms);
+  }
+}
+
+@keyframes laught {
+  from {transform: translateY(2px);}
+  to {transform: translateY(-2px);}
+}
+
+
+.button-code:hover {
+  img {
+    @include animation (beat, 200ms);
+  }
+}
+
+@keyframes beat {
+  from {transform: scale(1);}
+  to {transform: scale(1.2);}
+}
+
+.button-chat:hover {
+  img {
+    @include animation (rotate, 200ms);
+    transform-origin: center center;
+  }
+}
+
+@keyframes rotate {
+  from {transform: rotate(-10deg);}
+  to {transform: rotate(10deg);}
+}
+
+.button-img {
+  vertical-align: bottom;
+  padding-right: 10px;
+}
+
+footer {
+  text-align: center;
+  color: white;
+  margin-top: 40px;
+}
+
+.social-group {
+  a {
+    opacity: 1;
+    display: inline-block;
+    padding: 10px 5px;
+    transition: opacity 200ms ease-in-out;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.web-link {
+  color: white;
+  text-decoration: underline;
+}
+
+.swibe-menu {
+  ul {
+    padding: 8px 0;
+    list-style-type: none;
+    margin-bottom: 0;
+  }
+
+  a {
+    display: block;
+    text-align: left;
+    line-height: 48px;
+    padding: 0 16px;
+    vertical-align: middle;
+    text-decoration: none;
+    color: inherit;
+    &:hover,
+    &:focus {
+      color: inherit;
+      background-color: #eee;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+}
