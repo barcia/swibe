@@ -1,12 +1,12 @@
 # Swibe
 A simple slide menu in CSS and JavaScript for modern intefaces and cool projects
 
-1. [Features](https://github.com/barcia/swibe#features)
-2. [Getting Started](https://github.com/barcia/swibe#getting-started)
-3. [Configuration](https://github.com/barcia/swibe#configuration)
-4. [Changelog](https://github.com/barcia/swibe#changelog)
-5. [License](https://github.com/barcia/swibe#license)
-6. [Credits](https://github.com/barcia/swibe#credits)
+1. [Features](https://github.com/barcia/swibe#features)   
+2. [Getting Started](https://github.com/barcia/swibe#getting-started)   
+3. [Configuration](https://github.com/barcia/swibe#configuration)   
+4. [Changelog](https://github.com/barcia/swibe#changelog)   
+5. [License](https://github.com/barcia/swibe#license)   
+6. [Credits](https://github.com/barcia/swibe#credits)   
 
 
 
