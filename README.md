@@ -1,4 +1,6 @@
 # Swibe
+
+[![Join the chat at https://gitter.im/barcia/swibe](https://badges.gitter.im/barcia/swibe.svg)](https://gitter.im/barcia/swibe?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 A simple slide and swipe menu in CSS and JavaScript.
 
 * [Demo](http://barcia.github.io/swibe-menu/)
