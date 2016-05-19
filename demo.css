@@ -1,4 +1,12 @@
-/* This CSS code isn't necesary, but all looks better, add here your CSS */
+
+/* This CSS code isn't necesary, but all looks better */
+
+/* 1. In a website without content, like demo.html, not work the slide */
+body, html {
+  margin: 0;
+  height: 100%; /* 1 */
+  width: 100%; /* 1 */
+}
 
 .swibe-menu {
   background-color: white;
@@ -16,11 +24,11 @@
   padding: 0 16px;
   text-decoration: none;
   color: inherit;
+  cursor: pointer;
 }
 
 .swibe-menu a:hover {
   color: inherit;
   background-color: #ddd;
   text-decoration: none;
-  cursor: pointer;
 }

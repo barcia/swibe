@@ -1,117 +1,102 @@
 /**
- * Swibe menu
- * https://github.com/barcia/swibe-menu
- * Made in Galicia by Iván Barcia | @bartzia | barcia.cc
+ * Swibe
+ * MIT License
+ * https://github.com/barcia/swibe
+ * Made in Galiza by Iván Barcia | @bartzia | barcia.cc
  */
 
-"use strict";
+swibe();
 
-var strings = {
-  buttonID: "swibe-menu-button",
-  menuId: "swibe-menu",
-  menuOpenClass: "open",
-  shadowClass: "swibe-shadow",
-  shadowID: "swibe-shadow",
-  shadowOpenCLass: "enabled"
-}
+function swibe() {
 
-var conf = {
-  time: 200, //Tiempo en ms de la animaciones. Debe ser igual al del CSS
-  slideZoneStart: 15, //En px, distancia al borde izquierdo dentro de la cual debemos empezar a tocar para deslizar el menú
-  slideZoneEnd: 20 //En px, distancia al borde izquierdo fuera de la cual debemos parar de tocar para deslizar el menú
-}
+  'use strict';
 
-var activator;
-var menu;
-var body;
-var shadow;
-var slideStartX;
-var slideEndX;
-var shadowSlideStartX;
-var shadowSlideEndX;
+  var button;
+  var menu;
+  var body;
+  var shadow;
+  var slideXCurrent;
+  var slideXPrevious;
+  var touchX;
 
-//Eventos que se realizan después de cargar la página
-window.onload = loadMenu;
+  // Config
+  // 1. In px. Width of the area to the left of the screen that detects the
+  //    slide movement to open the menu
+  var conf = {
+    slideZone: 20, // 1
+    strings: {
+      buttonId: "swibe-button",
+      menuId: "swibe-menu",
+      shadowId: "swibe-shadow",
+      shadowClass: "swibe-shadow",
+      menuOpenClass: "swibe-menu--open",
+      shadowOpenCLass: "swibe-shadow--enabled"
+    }
+  };
 
-//Función que carga el menú
-function loadMenu() {
-  activator = document.getElementById(strings.buttonID);
-  menu = document.getElementById(strings.menuId);
-  if (activator && menu) {
-    body = document.getElementsByTagName('body')[0];
-    body.addEventListener('touchstart', slideStart);
-    activator.addEventListener('click', slideMenu);
-    body.addEventListener('touchend', slideEnd);
-    console.info("Slide menu cargado correctamente.")
+
+  window.addEventListener('load', loadMenu); // Load the menu at beginning
+
+  function loadMenu() {
+    body = document.body;
+    button = document.getElementById(conf.strings.buttonId);
+    menu = document.getElementById(conf.strings.menuId);
+
+    if (body && button && menu) {
+      button.addEventListener('click', openMenu);
+      body.addEventListener('touchstart', touchStart);
+      body.addEventListener('touchmove', slideMenu);
+      createShadow(); // Create the shadow at beginning
+    }
   }
-}
 
-//Función que abre el menú
-function openMenu() {
-  menu.classList.add(strings.menuOpenClass);
-  body.style.overflowY="hidden";
-}
+    function createShadow() {
+      shadow = document.createElement('div');
+      body.appendChild(shadow);
+      shadow.id = conf.strings.shadowId;
+      shadow.classList.add(conf.strings.shadowClass);
+      shadow.addEventListener('click', closeMenu);
+    }
 
-//Función que crea la sombra
-function createShadow() {
-  shadow = document.createElement('div');
-  body.appendChild(shadow);
-  shadow.id = strings.shadowID;
-  shadow.classList.add(strings.shadowClass);
-  setTimeout(function(){
-    shadow.classList.add(strings.shadowOpenCLass);
-  }, 0.1);
-  shadow.addEventListener('click', closeAll); //Añade evento a la sombra: Al hacer clic, ejecuta la función 'closeAll'
-  shadow.addEventListener('touchstart', shadowSlideStart);
-  shadow.addEventListener('touchend', shadowSlideEnd);
-}
 
-//Función que reúne las dos anteriores, ya que siempre van unidas
-function slideMenu() {
-  openMenu();
-  createShadow();
-}
 
-//Función que cierra todo
-function closeAll() {
-  menu.classList.remove(strings.menuOpenClass);
-  shadow.classList.remove(strings.shadowOpenCLass);
-  body.removeAttribute("style");
-  setTimeout(function(){
-    shadow.remove();
-  }, conf.time);
-}
+  function openMenu() {
+    menu.classList.add(conf.strings.menuOpenClass); // Add menu open class
+    body.style.overflowY="hidden"; // Remove body vertical scroll
+    shadow.classList.add(conf.strings.shadowOpenCLass); // Enable shadow
+  }
 
-//Funciones para abrir todo deslizando desde el lateral izquierdo
-function slideStart(event) {
-  if (event.targetTouches.length == 1) {
+
+
+  function closeMenu() {
+    menu.classList.remove(conf.strings.menuOpenClass); // Remove menu open class
+    body.style.overflowY=null; // Restore body scroll to default
+    shadow.classList.remove(conf.strings.shadowOpenCLass); // Disable shadow
+  }
+
+
+
+  function touchStart(event) {
     var touch = event.targetTouches[0];
-    slideStartX = touch.pageX;
-    confirm.log(touch.pageX)
+    touchX = touch.pageX;
+    slideXCurrent = touchX;
+    slideXPrevious = touchX;
   }
-}
 
-function slideEnd(event) {
-  var touch = event.changedTouches[0]
-  slideEndX = touch.pageX;
-  console.log()
-  if (slideStartX < conf.slideZoneStart && slideEndX > conf.slideZoneEnd && !menu.classList.contains(strings.menuOpenClass)) {
-    slideMenu();
-  }
-}
 
-//Funciones para cerrar todo deslizando desde la sombra
-function shadowSlideStart(event) {
-  if (event.targetTouches.length == 1) {
+
+  function slideMenu(event) {
     var touch = event.targetTouches[0];
-    shadowSlideStartX = touch.pageX;
-  }
-}
 
-function shadowSlideEnd(event) {
-  var touch = event.changedTouches[0]
-  shadowSlideEndX = touch.pageX;
-  if (shadowSlideStartX > shadowSlideEndX) {
-    closeAll();
+    if (slideXCurrent > slideXPrevious && touchX < conf.slideZone) {
+      openMenu(); // If slide right from sliding zone, open menu
+    }
+
+    if (slideXCurrent < slideXPrevious) {
+      closeMenu(); // If slide left everywhere, close menu
+    }
+
+    slideXPrevious = slideXCurrent;
+    slideXCurrent = touch.pageX;
   }
 }

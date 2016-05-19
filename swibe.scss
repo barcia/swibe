@@ -1,42 +1,75 @@
 /**
- * Swibe menu
- * https://github.com/barcia/swibe-menu
- * Made in Galicia by Iván Barcia | @bartzia | barcia.cc
+ * Swibe
+ * MIT License
+ * https://github.com/barcia/swibe
+ * Made in Galiza by Iván Barcia | @bartzia | barcia.cc
  */
 
-//Variables
-$menuWidth: 300px;
-$animationTime: 200ms; //Change it also in swibe.js
 
+
+// CONFIG
+$swibe-width              : 300px;
+$swibe-transition-duration: 300ms;
+$swibe-transition-function: ease-in-out;
+$swibe-zindex             : 999;
+$swibe-shadow-zindex      : $swibe-zindex - 1;
+$swibe-shadow-opacity     : .5;
+
+
+
+// MENU
+// 1. The menu is visible from the beginning, but moved to the left of the screen
+// 2. To prevent the menu is wider than the screen
 .swibe-menu {
+  display: block;
   position: fixed;
   top: 0;
-  left: -$menuWidth;
+  left: -$swibe-width; // 1
+  width: $swibe-width;
+  max-width: calc(100% - 40px); // 2
   height: 100%;
-  width: $menuWidth;
-  z-index: 99;
+  transition: transform $swibe-transition-duration $swibe-transition-function;
   will-change: transform;
-  transition: transform $animationTime ease-in-out ;
   overflow-y: auto;
+  z-index: $swibe-zindex;
 
-  &.open {
-    transform: translateX($menuWidth);
+  &.swibe-menu--open {
+    transform: translateX($swibe-width); //1
   }
 }
 
+
+
+// SHADOW
+// 1. The shadow is created from the beginning, but whithout size
+// 2. property duration timing-function delay
 .swibe-shadow {
+  display: block;
   position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  will-change: opacity;
-  transition: opacity $animationTime ease-in-out ;
-  background-color: black;
-  z-index: 98;
+  width: 0; // 1
+  height: 0; // 1
+  transition: background-color $swibe-transition-duration $swibe-transition-function 0s, // 2
+              height 0s step-end $swibe-transition-duration, // 2
+              width 0s step-end $swibe-transition-duration; // 2
+  will-change: background-color;
+  background-color: hsla(0, 0%, 0%, 0);
+  z-index: $swibe-shadow-zindex;
 
-  &.enabled {
-    opacity: 0.6;
+  &.swibe-shadow--enabled {
+    width: 100%;
+    height: 100%;
+    transition: background-color $swibe-transition-duration $swibe-transition-function 0s, //2
+                height 0s step-start 0s, //2
+                width 0s step-start 0s; //2
+    background-color: hsla(0, 0%, 0%, $swibe-shadow-opacity);
   }
+}
+
+
+
+// VARIANTS
+.swibe-menu--animation--material-design {
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1); // https://goo.gl/ZfYpXc
 }
