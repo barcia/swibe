@@ -1,5 +1,5 @@
 # Swibe
-A simple slide menu in CSS and JavaScript for modern intefaces
+A simple slide menu in CSS and JavaScript for modern intefaces and cool projects
 
 1. [Features](https://github.com/barcia/swibe#features)
 2. [Getting Started](https://github.com/barcia/swibe#getting-started)
@@ -7,7 +7,6 @@ A simple slide menu in CSS and JavaScript for modern intefaces
 4. [Changelog](https://github.com/barcia/swibe#changelog)
 5. [License](https://github.com/barcia/swibe#license)
 6. [Credits](https://github.com/barcia/swibe#credits)
-
 
 
 
@@ -22,7 +21,7 @@ A simple slide menu in CSS and JavaScript for modern intefaces
 
 
 ## Features
-* **Simple**, clean and hackable
+* **Simple** and hackable
 * **Lighweight**: 2.4Kb of JS and 800b of CSS
 * **Vanilla JavaScript**, whithout heavy dependencies
 * All fluid transitions and animations **use only CSS3**
