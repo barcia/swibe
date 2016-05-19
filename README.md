@@ -10,6 +10,7 @@ A simple slide menu in CSS and JavaScript for modern intefaces
 
 
 
+
 * [Project site](https://projects.barcia.cc/bramework)
 * [Demo](https://barcia.github.io/swibe/)
 * [Code](https://github.com/barcia/swibe)
@@ -61,7 +62,7 @@ A simple slide menu in CSS and JavaScript for modern intefaces
 ```
 
 
-> You can see it in [demo.html](https://github.com/barcia/swibe/blob/master/simple-demo.html)
+> You can see it in [index.html](https://github.com/barcia/swibe/blob/master/index.html)
 
 
 
@@ -73,6 +74,9 @@ A simple slide menu in CSS and JavaScript for modern intefaces
   * `$swibe-transition-duration`: The animation duration in ms. (Default: `300ms`)
   * `$swibe-transition-function`: The speed curve of an animation. (Default: `ease-in-out`)
   * `$swibe-shadow-opacity`: The shadow opacity (from `0` to `1`). (Default: `.5`)
+
+
+> If you want add your own styles, you cas use the `.swibe-menu` class.
 
 
 ### JavaScript
@@ -92,9 +96,8 @@ See [LICENSE.md](https://github.com/barcia/swibe/blob/master/LICENSE.md)
 
 
 ## Credits
-Desarrollado con :heart: por Iván Barcia en Galicia, SPAIN.
+Developed with :heart: by [Iván Barcia](https://barcia.cc) in Galiza, SPAIN.
 
-* [Website](http://ivanbarcia.eu)
-* [Twitter](https://twitter.com/bartzia)
-* [Google +](https://plus.google.com/+IvánBarcia)
-* [Github](https://github.com/barcia/)
+* https://barcia.cc
+* https://twitter.com/@bartzia
+* https://github.com/barcia
