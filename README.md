@@ -83,6 +83,8 @@ A simple slide menu in CSS and JavaScript for modern intefaces and cool projects
 ### JavaScript
 
   * `slideZone`: In px. Width of the area to the left of the screen that detects the slide movement to open the menu. (Pay attention to body margins) (Default: `20`)
+  * `minMov`: In px. Min. pixels of movement that are required to close the menu (Default: `15`)
+  * `maxAngle`: In deg. Max. angle of slide movement who is accepted to close the menu. (Default: `10`)
 
 
 
