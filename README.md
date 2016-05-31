@@ -12,13 +12,13 @@ A simple slide menu in CSS and JavaScript for modern intefaces and cool projects
 
 
 ## Links
-* [Project site](https://projects.barcia.cc/bramework)
-* [Demo](https://barcia.github.io/swibe/)
-* [Code](https://github.com/barcia/swibe)
-* [Download](https://github.com/barcia/swibe/archive/master.zip)
-* [Issues](https://github.com/barcia/swibe/issues)
-* [Docs](https://github.com/barcia/swibe/blob/master/README.md)
-* [Support](https://gitter.im/barcia/swibe)
+* Project site: [projects.barcia.cc/bramework](https://projects.barcia.cc/bramework)
+* Simple demo: [](https://barcia.github.io/swibe/)
+* Code: [github.com/barcia/swibe](https://github.com/barcia/swibe)
+* Issues: [github.com/barcia/swibe/issues](https://github.com/barcia/swibe/issues)
+* Download: [.zip](https://github.com/barcia/swibe/archive/master.zip)
+* Docs: [README.md](https://github.com/barcia/swibe/blob/master/README.md)
+* Support: [gitter.im/barcia/swibe](https://gitter.im/barcia/swibe)
 
 
 
@@ -45,7 +45,7 @@ A simple slide menu in CSS and JavaScript for modern intefaces and cool projects
 **2. Add _id_ `swibe-menu-button` to the element who will open the menu.**
 
 ```html
-<span id="swibe-menu-button">Menu</span>
+<button id="swibe-menu-button">Menu</button>
 ```
 
 
@@ -63,7 +63,7 @@ A simple slide menu in CSS and JavaScript for modern intefaces and cool projects
 ```
 
 
-> You can see it in [index.html](https://github.com/barcia/swibe/blob/master/index.html)
+> You can see it in [demo.html](https://github.com/barcia/swibe/blob/master/index.html)
 
 
 
@@ -77,7 +77,7 @@ A simple slide menu in CSS and JavaScript for modern intefaces and cool projects
   * `$swibe-shadow-opacity`: The shadow opacity (from `0` to `1`). (Default: `.5`)
 
 
-> If you want add your own styles, you cas use the `.swibe-menu` class.
+> If you want add your own styles, you can use the `.swibe-menu` class.
 
 
 ### JavaScript
