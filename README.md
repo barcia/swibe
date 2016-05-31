@@ -13,7 +13,7 @@ A simple slide menu in CSS and JavaScript for modern intefaces and cool projects
 
 ## Links
 * Project site: [projects.barcia.cc/bramework](https://projects.barcia.cc/bramework)
-* Simple demo: [](https://barcia.github.io/swibe/)
+* Demo: [demo.html](https://cdn.rawgit.com/barcia/swibe/master/demo.html)
 * Code: [github.com/barcia/swibe](https://github.com/barcia/swibe)
 * Issues: [github.com/barcia/swibe/issues](https://github.com/barcia/swibe/issues)
 * Download: [.zip](https://github.com/barcia/swibe/archive/master.zip)
