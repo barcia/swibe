@@ -19,22 +19,24 @@ $swibe-shadow-opacity     : .5;
 
 // MENU
 // 1. The menu is visible from the beginning, but moved to the left of the screen
-// 2. To prevent the menu is wider than the screen
+// 2. To prevent the menu be wider than the screen
 .swibe-menu {
   display: block;
   position: fixed;
   top: 0;
   left: -$swibe-width; // 1
   width: $swibe-width;
-  max-width: calc(100% - 40px); // 2
+  max-width: $swibe-width;
   height: 100%;
-  transition: transform $swibe-transition-duration $swibe-transition-function;
+  transition: transform $swibe-transition-duration $swibe-transition-function,
+              max-width $swibe-transition-duration $swibe-transition-function,;
   will-change: transform;
   overflow-y: auto;
   z-index: $swibe-zindex;
 
   &.swibe-menu--open {
     transform: translateX($swibe-width); //1
+    max-width: calc(100% - 40px); // 2
   }
 }
 

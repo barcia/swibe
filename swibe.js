@@ -15,124 +15,167 @@ function swibe() {
   var menu;
   var body;
   var shadow;
-  var slideXCurrent;
-  var slideXPrevious;
-  var slideYCurrent;
-  var touchX;
-  var touchY;
+  var touchX = null;
+  var touchY = null;
+  var slideX = null;
+  var slideY = null;
+  var movX   = null;
+  var movY   = null;
+  var angle  = null;
 
-  // Config
-  // 1. In px. Width of the area to the left of the screen that detects the
-  //    slide movement to open the menu
-  // 2. In px. Min pixeles of movement that are required to close the menu
-  // 3. In deg. Max angle of slide movement who is accepted to close the menu
-  var conf = {
-    slideZone: 20, // 1
-    minMov: 15, // 2
-    maxAngle: 10, // 3
-    strings: {
-      buttonId: "swibe-button",
-      menuId: "swibe-menu",
-      shadowId: "swibe-shadow",
-      shadowClass: "swibe-shadow",
-      menuOpenClass: "swibe-menu--open",
+  // Strings
+  var strings = {
+      buttonId       : "swibe-button",
+      menuId         : "swibe-menu",
+      shadowClass    : "swibe-shadow",
+      menuOpenClass  : "swibe-menu--open",
       shadowOpenCLass: "swibe-shadow--enabled"
-    }
-  };
-
-  // Utilities
-  function calcMov(finalPoint, initialPoint) {
-    var mov = (finalPoint - initialPoint);
-    return mov;
-  }
-
-  function calcAngle(Y, X) {
-    var theta = Math.atan(Y / X);
-    var angle = theta * 180 / Math.PI;
-    return angle;
-  }
+    };
 
 
 
-  window.addEventListener('load', loadMenu); // Load the menu at beginning
+  // Load menu after it is loaded the DOM
+  window.addEventListener('DOMContentLoaded', loadMenu, false);
 
+
+
+  // FUNCTIONS
+  /**
+   * This function load all necesary DOM element and gives them the necessary
+   * EventListener.
+   */
   function loadMenu() {
-    body = document.body;
-    button = document.getElementById(conf.strings.buttonId);
-    menu = document.getElementById(conf.strings.menuId);
-
-    if (body && button && menu) {
-      button.addEventListener('click', openMenu);
-      body.addEventListener('touchstart', touchStart);
-      body.addEventListener('touchmove', slideMenu);
+    body   = document.body; // Get the body element
+    menu   = document.getElementById(strings.menuId); // Get the menu element by the ID
+    button = document.getElementById(strings.buttonId); // Get the button element by the ID
+    
+    if (body && menu && button) {
+      button.addEventListener('click', openMenu, false);
+      body.addEventListener('touchstart', touchStart, false);
+      body.addEventListener('touchmove', slideMenu, false);
       createShadow(); // Create the shadow at beginning
+      return true;
+    }
+    else {
+      console.error("[SWIBE] Some elements of the DOM aren't loaded correctly. Review the Id's");
+      return false;
     }
   }
 
+    /**
+     * Creates the DOM item who will be the shadow when menu opens. We append
+     * a class to style it with CSS (that minify it at beginning).
+     *
+     * When we click(or touch) the shadow, the menu closes.
+     */
     function createShadow() {
       shadow = document.createElement('div');
       body.appendChild(shadow);
-      shadow.id = conf.strings.shadowId;
-      shadow.classList.add(conf.strings.shadowClass);
-      shadow.addEventListener('click', closeMenu);
+      shadow.classList.add(strings.shadowClass);
+      shadow.addEventListener('click', closeMenu, false);
     }
 
 
 
+  // Open the menu
   function openMenu() {
-    menu.classList.add(conf.strings.menuOpenClass); // Add menu open class
+    menu.classList.add(strings.menuOpenClass); // Add menu open class
+    shadow.classList.add(strings.shadowOpenCLass); // Enable shadow
     body.style.overflowY="hidden"; // Remove body vertical scroll
-    shadow.classList.add(conf.strings.shadowOpenCLass); // Enable shadow
-    return true;
   }
 
 
 
+  // Close the menu
   function closeMenu() {
-    menu.classList.remove(conf.strings.menuOpenClass); // Remove menu open class
+    menu.classList.remove(strings.menuOpenClass); // Remove menu open class
+    shadow.classList.remove(strings.shadowOpenCLass); // Disable shadow
     body.style.overflowY=null; // Restore body scroll to default
-    shadow.classList.remove(conf.strings.shadowOpenCLass); // Disable shadow
-    return true;
   }
 
 
 
+  //Detects when we touch the screen and save the coords
   function touchStart(event) {
-    var touch = event.targetTouches[0];
-    touchX = touch.pageX;
-    touchY = touch.pageY;
-    slideXCurrent = touchX;
-    slideXPrevious = touchX;
-    slideYCurrent = touchY;
+    touchX = event.targetTouches[0].clientX;
+    touchY = event.targetTouches[0].clientY;
+    slideX = touchX;
+    slideY = touchY;
   }
 
 
 
+  // Detects when we slide our finger over the screen
   function slideMenu(event) {
-    var touch = event.targetTouches[0];
 
-    slideXPrevious = slideXCurrent;
-    slideXCurrent = touch.pageX;
-    slideYCurrent = touch.pageY;
+    slideX = event.targetTouches[0].clientX; // The last X coord where we touch when slide
+    slideY = event.targetTouches[0].clientY; // The last Y coord where we touch when slide
 
-    var movX = calcMov(slideXCurrent, touchX);
-    var movY = calcMov(slideYCurrent, touchY);
+    movX = calcMov(touchX, slideX); // Calculates how we move in X
+    movY = calcMov(touchY, slideY); // Calculates how we move in Y
 
-    var angle = calcAngle(movY , movX);
-
+    angle = calcAngle(movY, movX); // Calc the angle with x-axis
+    
     if (angle < 0) {
       angle *= -1; // Convert angle to positive
     }
-
-
-
-    if (slideXCurrent > slideXPrevious && touchX < conf.slideZone) {
-      openMenu(); // If slide right from sliding zone, open menu
+    
+    if (swibeGRE() === open) {
+      openMenu();
     }
-
-    if (slideXCurrent < slideXPrevious && (touchX - slideXCurrent) > conf.minMov && angle < conf.maxAngle) {
-      closeMenu(); // If slide left everywhere, close menu
+    
+    if (swibeGRE() === close) {
+      closeMenu();
     }
   }
+
+    // Calculates how we move
+    function calcMov(initialPoint, finalPoint) {
+      var mov = (finalPoint - initialPoint);
+      return mov;
+    }
+
+    // Calculates the angle at which we move
+    function calcAngle(X, Y) {
+      return Math.atan(X / Y) * 180 / Math.PI;
+    }
+    
+    // Swibe Gesture Recognition Engine.
+    // A number of variables and conditions who try to know what you want to do
+    // when you slide your finger.
+    function swibeGRE() {
+      
+      // Open conditions
+      var openCond1 = (touchX < 20) ? true : false; // Touch in left side of screen
+      var openCond2 = (slideX > touchX) ? true : false; // Slide right
+
+      var openConditions = openCond1 && openCond2;
+
+
+      // Close conditions
+      var closeCond1 = (slideX < touchX) ? true : false; // Slide left
+      var closeCond2 = (movY < 280) ? true : false; // Don't slide much in Y
+      var closeCond3_ratio = 1.3; // If you slide with more angle, you have to slide more in X
+      var closeCond3_1 = ((angle < 10) && (-movX) > (10 * closeCond3_ratio)) ? true : false;
+      var closeCond3_2 = ((angle < 20) && (-movX) > (20 * closeCond3_ratio)) ? true : false;
+      var closeCond3_3 = ((angle < 30) && (-movX) > (30 * closeCond3_ratio)) ? true : false;
+      var closeCond3_4 = ((angle < 40) && (-movX) > (40 * closeCond3_ratio)) ? true : false;
+      var closeCond3_5 = ((angle < 50) && (-movX) > (50 * closeCond3_ratio)) ? true : false;
+      var closeCond3_6 = ((angle < 60) && (-movX) > (60 * closeCond3_ratio)) ? true : false;
+      var closeCond3_7 = ((angle < 70) && (-movX) > (70 * closeCond3_ratio)) ? true : false;
+      var closeCond3_8 = ((angle < 80) && (-movX) > (80 * closeCond3_ratio)) ? true : false;
+      var closeCond3_9 = ((angle < 90) && (-movX) > (90 * closeCond3_ratio)) ? true : false;
+
+      var closeConditions = closeCond1 && closeCond2 && (closeCond3_1 || closeCond3_2 || closeCond3_3 || closeCond3_4 || closeCond3_5 || closeCond3_6 || closeCond3_7 || closeCond3_8 || closeCond3_9);
+
+
+      if (openConditions) {
+        return open;
+      }
+
+      if (closeConditions) {
+        return close;
+      }
+    }
 
 }

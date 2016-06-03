@@ -24,10 +24,11 @@ A simple slide menu in CSS and JavaScript for modern intefaces and cool projects
 
 ## Features
 * **Simple** and hackable
-* **Lighweight**: 2.4Kb of JS and 800b of CSS
+* **Lighweight**: 5.4Kb of JS and 860b of CSS
 * **Vanilla JavaScript**, whithout heavy dependencies
 * All fluid transitions and animations **use only CSS3**
 * Includes **touch events** to open and close the menu with natural gestures in touchscreen devices
+* With the _Swibe Gesture Recognition Engine_
 * Easily **configurable**
 * **Open Source** under MIT License
 
@@ -78,13 +79,6 @@ A simple slide menu in CSS and JavaScript for modern intefaces and cool projects
 
 
 > If you want add your own styles, you can use the `.swibe-menu` class.
-
-
-### JavaScript
-
-  * `slideZone`: In px. Width of the area to the left of the screen that detects the slide movement to open the menu. (Pay attention to body margins) (Default: `20`)
-  * `minMov`: In px. Min. pixels of movement that are required to close the menu (Default: `15`)
-  * `maxAngle`: In deg. Max. angle of slide movement who is accepted to close the menu. (Default: `10`)
 
 
 
