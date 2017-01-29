@@ -11,7 +11,7 @@ function swibe() {
   'use strict';
 
   // Variables
-  var button;
+  var trigger;
   var menu;
   var body;
   var shadow;
@@ -25,7 +25,7 @@ function swibe() {
 
   // Strings
   var strings = {
-      buttonId       : "swibe-button",
+      triggerId      : "swibe-trigger",
       menuId         : "swibe-menu",
       shadowClass    : "swibe-shadow",
       menuOpenClass  : "swibe-menu--open",
@@ -47,17 +47,17 @@ function swibe() {
   function loadMenu() {
     body   = document.body; // Get the body element
     menu   = document.getElementById(strings.menuId); // Get the menu element by the ID
-    button = document.getElementById(strings.buttonId); // Get the button element by the ID
+    trigger = document.getElementById(strings.triggerId); // Get the trigger element by the ID
     
-    if (body && menu && button) {
-      button.addEventListener('click', openMenu, false);
+    if (body && menu && trigger) {
+      trigger.addEventListener('click', openMenu, false);
       body.addEventListener('touchstart', touchStart, false);
       body.addEventListener('touchmove', slideMenu, false);
       createShadow(); // Create the shadow at beginning
       return true;
     }
     else {
-      console.error("[SWIBE] Some elements of the DOM aren't loaded correctly. Review the Id's");
+      console.warn("[SWIBE] Some needed elements of the DOM aren't loaded correctly. Review the Id's and the docs: https://github.com/barcia/swibe/blob/master/README.md");
       return false;
     }
   }
