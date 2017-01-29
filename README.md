@@ -1,5 +1,5 @@
 # Swibe
-### v3.1
+### v3.1.0
 A simple slide menu in CSS and JavaScript for modern interfaces and cool projects
 
 ## Table of contents
