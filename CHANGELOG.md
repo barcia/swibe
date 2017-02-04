@@ -1,5 +1,9 @@
 # Changelog
 
+## [3.2.0](https://github.com/barcia/swibe/releases/tag/3.2.0) - 2017-02-04
+### Added
+- Grunt files for development
+
 
 ## [3.1.0](https://github.com/barcia/swibe/releases/tag/3.1.0) - 2017-01-29
 ### Added

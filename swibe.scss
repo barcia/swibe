@@ -33,6 +33,12 @@ $swibe-shadow-opacity     : .5;
   will-change: transform;
   overflow-y: auto;
   z-index: $swibe-zindex;
+  
+  &.swibe-menu--variant-screensize {
+    left: 0;
+    height: auto;
+    position: relative;
+  }
 
   &.swibe-menu--open {
     transform: translateX($swibe-width); //1

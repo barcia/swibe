@@ -1,0 +1,17 @@
+{
+  "name": "swibe",
+  "version": "1.0.0",
+  "description": "Swibe grunt package",
+  "repository": "https://github.com/barcia/swibe",
+  "author": "Iván Barcia",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^6.7.2",
+    "cssnano": "^3.10.0",
+    "grunt": "^1.0.1",
+    "grunt-browser-sync": "^2.2.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-postcss": "^0.8.0"
+  }
+}
