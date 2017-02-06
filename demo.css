@@ -32,3 +32,12 @@ body, html {
   background-color: #ddd;
   text-decoration: none;
 }
+
+
+.demo-info {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+  color: hsla(0, 0%, 0%, .3);
+}

@@ -39,11 +39,28 @@ module.exports = function (grunt) {
       }
     },
 
+    // Uglify
+    uglify: {
+      options: {
+        compress: true
+      },
+      scripts: {
+        files: {
+          'swibe.min.js': [ 'swibe.js']
+        }
+      }
+    },
+
     // Watch
     watch: {
       styles: {
         files: ['swibe.scss'],
         tasks: ['css']
+      },
+      scripts: {
+        files: ['swibe.js'],
+        tasks: ['js']
+      },
     },
 
     // BrowserSync
@@ -58,6 +75,7 @@ module.exports = function (grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-postcss');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-browser-sync');
@@ -65,5 +83,6 @@ module.exports = function (grunt) {
   grunt.registerTask('default', ['watch']);
   grunt.registerTask('sync', ['browserSync']);
   grunt.registerTask('css', ['sass', 'postcss']);
-  grunt.registerTask('all', ['sass', 'postcss',]);
+  grunt.registerTask('js', ['uglify']);
+  grunt.registerTask('all', ['sass', 'postcss','uglify']);
 };

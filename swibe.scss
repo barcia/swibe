@@ -1,5 +1,5 @@
 /**
- * Swibe
+ * Swibe v.3.2.0
  * MIT License
  * https://github.com/barcia/swibe
  * Made in Galiza by Iván Barcia | @bartzia | barcia.cc
@@ -15,7 +15,11 @@ $swibe-zindex             : 999;
 $swibe-shadow-zindex      : $swibe-zindex - 1;
 $swibe-shadow-opacity     : .5;
 
-
+// Breackpoints
+$swibe-bp-extra-large: 1366px !default; // => Desktop
+$swibe-bp-large      : 1024px !default; // => Tablet horizontal
+$swibe-bp-medium     : 800px !default;  // => Tablet Vertical & Mobile Horizontal
+$swibe-bp-small      : 450px !default; 
 
 // MENU
 // 1. The menu is visible from the beginning, but moved to the left of the screen
@@ -33,12 +37,6 @@ $swibe-shadow-opacity     : .5;
   will-change: transform;
   overflow-y: auto;
   z-index: $swibe-zindex;
-  
-  &.swibe-menu--variant-screensize {
-    left: 0;
-    height: auto;
-    position: relative;
-  }
 
   &.swibe-menu--open {
     transform: translateX($swibe-width); //1
@@ -78,6 +76,21 @@ $swibe-shadow-opacity     : .5;
 
 
 // VARIANTS
+.swibe-menu--responsive {
+  @media (min-width: $swibe-bp-small) {
+    position: relative;
+    left: 0;
+  }
+}
+
+.swibe-trigger--responsive {
+  @media (min-width: $swibe-bp-small) {
+    display: none;
+  }
+}
+
+
+// Animations
 .swibe-menu--animation-material-design {
   transition-timing-function: cubic-bezier(.4, 0, .2, 1); // https://goo.gl/ZfYpXc
 }

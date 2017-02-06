@@ -1,5 +1,5 @@
-/**
- * Swibe
+/**!
+ * Swibe v.3.2.0
  * MIT License
  * https://github.com/barcia/swibe
  * Made in Galiza by Iván Barcia | @bartzia | barcia.cc
@@ -13,7 +13,9 @@ function swibe() {
   // Variables
   var trigger;
   var menu;
+  var menuType;
   var body;
+  var windowWidth;
   var shadow;
   var touchX = null;
   var touchY = null;
@@ -25,42 +27,103 @@ function swibe() {
 
   // Strings
   var strings = {
-      triggerId      : "swibe-trigger",
-      menuId         : "swibe-menu",
-      shadowClass    : "swibe-shadow",
-      menuOpenClass  : "swibe-menu--open",
-      shadowOpenCLass: "swibe-shadow--enabled"
+      triggerId      : 'swibe-trigger',
+      menuId         : 'swibe-menu',
+      shadowClass    : 'swibe-shadow',
+      menuOpenClass  : 'swibe-menu--open',
+      shadowOpenCLass: 'swibe-shadow--enabled'
     };
 
 
 
   // Load menu after it is loaded the DOM
   window.addEventListener('DOMContentLoaded', loadMenu, false);
-
-
+  // Execute the 'windowResize' function when the screen size change
+  window.addEventListener('resize', windowResize, false);
 
   // FUNCTIONS
   /**
-   * This function load all necesary DOM element and gives them the necessary
-   * EventListener.
+   * This function load all necesary DOM element
    */
   function loadMenu() {
-    body   = document.body; // Get the body element
-    menu   = document.getElementById(strings.menuId); // Get the menu element by the ID
+    body = document.body; // Get the body element
+    menu = document.getElementById(strings.menuId); // Get the menu element by the ID
     trigger = document.getElementById(strings.triggerId); // Get the trigger element by the ID
-    
+    windowWidth = screen.width; // This is for detect only horizontal resize after
+
+    // If all elements exist, check the menu type
     if (body && menu && trigger) {
-      trigger.addEventListener('click', openMenu, false);
-      body.addEventListener('touchstart', touchStart, false);
-      body.addEventListener('touchmove', slideMenu, false);
-      createShadow(); // Create the shadow at beginning
-      return true;
+
+      if (checkMenuType() == 'default') {
+        trigger.addEventListener('click', openMenu, false);
+        body.addEventListener('touchstart', touchStart, false);
+        body.addEventListener('touchmove', slideMenu, false);
+        createShadow();
+        return true;
+      }
+      else if (checkMenuType() == 'responsive') {
+        trigger.removeEventListener('click', openMenu, false);
+        body.removeEventListener('touchstart', touchStart, false);
+        body.removeEventListener('touchmove', slideMenu, false);
+        return true;
+      }
+  
     }
-    else {
-      console.warn("[SWIBE] Some needed elements of the DOM aren't loaded correctly. Review the Id's and the docs: https://github.com/barcia/swibe/blob/master/README.md");
+    // Debug message
+    else if(menu || trigger) {
+      console.warn("[SWIBE] Some needed elements of the DOM aren't loaded correctly. Review the HTML Id's and the docs: https://github.com/barcia/swibe/blob/master/README.md");
       return false;
     }
+    // Debug message
+    else if((! menu) && (! trigger)) {
+      console.info("[SWIBE] You are loading the Swibe menu, but you don't have the trigger and menu elements (or you don't have the needed Id's). Review the docs: https://github.com/barcia/swibe/blob/master/README.md");
+      return false;
+    }
+
   }
+
+
+
+    /**
+     *  This function return us the type of menu
+     *  @return {string} [returns 'default' or 'responsive']
+     */
+    function checkMenuType() {
+
+      // Get the CSS properties for check the menu type
+      var triggerDisplay = window.getComputedStyle(trigger, null).getPropertyValue('display');
+      var menuLeft = window.getComputedStyle(menu, null).getPropertyValue('left'); 
+
+      // The menu is the "responsive" variant
+      if ((triggerDisplay == 'none') && ((! (parseInt(menuLeft.substring(0, menuLeft.length - 2)) < 0 )))) {
+        return 'responsive';
+      } 
+      // Debug message
+      else if ((triggerDisplay == 'none') || ((! (parseInt(menuLeft.substring(0, menuLeft.length - 2)) < 0 )))) {
+        console.warn("[SWIBE] You have one element (trigger or menu) with the 'responsive' variant but the other haven't it. Review the HTML classes and the docs: https://github.com/barcia/swibe/blob/master/README.md");
+        return false;
+      }
+      else { // Is default menu
+        return 'default';
+      }
+
+    }
+
+
+
+    /**
+     *  Detect only the horizontal resize, and close the menu only if it 
+     *  increases because is when the menu can change its type
+     */
+    function windowResize() {
+      if (windowWidth < screen.width) {
+          closeMenu();
+      }
+      loadMenu();
+      return;
+    }
+
+
 
     /**
      * Creates the DOM item who will be the shadow when menu opens. We append
@@ -69,10 +132,12 @@ function swibe() {
      * When we click(or touch) the shadow, the menu closes.
      */
     function createShadow() {
-      shadow = document.createElement('div');
-      body.appendChild(shadow);
-      shadow.classList.add(strings.shadowClass);
-      shadow.addEventListener('click', closeMenu, false);
+      if (shadow == undefined) {
+        shadow = document.createElement('div');
+        body.appendChild(shadow);
+        shadow.classList.add(strings.shadowClass);
+        shadow.addEventListener('click', closeMenu, false);
+      }
     }
 
 
@@ -81,7 +146,7 @@ function swibe() {
   function openMenu() {
     menu.classList.add(strings.menuOpenClass); // Add menu open class
     shadow.classList.add(strings.shadowOpenCLass); // Enable shadow
-    body.style.overflowY="hidden"; // Remove body vertical scroll
+    body.style.overflowY='hidden'; // Remove body vertical scroll
   }
 
 
@@ -89,8 +154,10 @@ function swibe() {
   // Close the menu
   function closeMenu() {
     menu.classList.remove(strings.menuOpenClass); // Remove menu open class
-    shadow.classList.remove(strings.shadowOpenCLass); // Disable shadow
     body.style.overflowY=null; // Restore body scroll to default
+    if (! (shadow == undefined)) {
+      shadow.classList.remove(strings.shadowOpenCLass); // Disable shadow
+    }
   }
 
 

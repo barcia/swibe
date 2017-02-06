@@ -1,8 +1,10 @@
 # Changelog
 
-## [3.2.0](https://github.com/barcia/swibe/releases/tag/3.2.0) - 2017-02-04
+## [3.2.0](https://github.com/barcia/swibe/releases/tag/3.2.0) - 2017-02-06
 ### Added
+- New *responsive* mode: for change menu visibility depending of screen size
 - Grunt files for development
+- New minified JS file: `swibe.min.js`
 
 
 ## [3.1.0](https://github.com/barcia/swibe/releases/tag/3.1.0) - 2017-01-29
