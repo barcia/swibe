@@ -3,19 +3,19 @@
 A simple slide menu in CSS and JavaScript for modern interfaces and cool projects
 
 ## Table of contents
-* [Swibe](#Swibe)
-  * [About](#About)
-  * [Features](#Features)
+* [Swibe](#swibe)
+  * [About](#about)
+  * [Features](#features)
 * [Getting Started](#getting-started)
 * [Configuration](#configuration)
   * [*Responsive Sensitive* mode](#responsive-sensitive-mode)
-  * [UI Settings](ui-settings)
+  * [UI Settings](#ui-settings)
   * [*Grunt* commands](#grunt-commands)
-* [Support](#Support)
-* [Contributing](#Contributing)
-* [Changelog](#Changelog)
-* [Credits](#Credits)
-* [License](#License)
+* [Support](#support)
+* [Contributing](#contributing)
+* [Changelog](#changelog)
+* [Credits](#credits)
+* [License](#license)
 
 ### About
 * Project site: [projects.barcia.cc/bramework](https://projects.barcia.cc/swibe)
