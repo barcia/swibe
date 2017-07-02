@@ -10,7 +10,7 @@ A simple slide menu in CSS and JavaScript for modern interfaces and cool project
 * [Configuration](#configuration)
   * [*Responsive Sensitive* mode](#responsive-sensitive-mode)
   * [UI Settings](#ui-settings)
-  * [*Grunt* commands](#grunt-commands)
+  * [*Gulp* commands](#gulp-commands)
 * [Support](#support)
 * [Contributing](#contributing)
 * [Changelog](#changelog)
@@ -100,7 +100,7 @@ The *Responsive Sensitive* mode is for when we want the menu to be **hidden on s
     </ul>
   </nav>
   ```
-  
+
 * You can change the **point when the menu change** between visible and invisible changing the **media queries** in the `.css` (or in the `.scss`) file.
 
 > You can see this example working in [demo-responsive.html](https://github.com/barcia/swibe/blob/master/demo-responsive.html)
@@ -120,12 +120,12 @@ Interesting variables in `swibe.scss`:
 > If you want add your own styles, you can use the `.swibe-menu` class or add your own classes.
 
 
-### *Grunt* commands
-* **`grunt`** - Active grunt watch and when any `.swibe.scss` or `swibe.js` file change, execute the following tasks: `grunt css`, `grunt js`
-* **`grunt sync`** - Create a local server for sync and test files in many devices in real time.
-* **`grunt css`** - Process the `swibe.scss` and the PostCSS tasks creating `.tmp/swibe.css` and `swibe.min.css`
-* **`grunt js`** - Minify `swibe.js` creating `swibe.min.js`
-* **`grunt all`** - Execute `grunt css` and `grunt js` tasks
+### *Gulp* commands
+* **`gulp`** - Active gulp watch and when any `.swibe.scss` or `swibe.js` file change, execute the following tasks: `gulp css`, `gulp js`
+* **`gulp sync`** - Create a local server for sync and test files in many devices in real time.
+* **`gulp css`** - Process the `swibe.scss` and the PostCSS tasks creating `.tmp/swibe.css` and `swibe.min.css`
+* **`gulp js`** - Minify `swibe.js` creating `swibe.min.js`
+* **`gulp all`** - Execute `gulp css` and `gulp js` tasks
 
 ## Support
 Visit the [Google+ Community](https://plus.google.com/communities/104938291205143609131/stream/8879dc2d-fed4-43a4-ba36-eca77af7d9db?hl=es-419)
