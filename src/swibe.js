@@ -1,248 +1,196 @@
 /**!
- * Swibe v.3.2.0
+ * Swibe v.3.3.0
  * MIT License
  * https://github.com/barcia/swibe
  * Made in Galiza by Iván Barcia | @bartzia | barcia.cc
  */
 
-swibe();
+const swibe = {
 
-function swibe() {
-  'use strict';
+  status: false, //Initial status of the menu. false = closed, true = opened
 
-  // Variables
-  var trigger;
-  var menu;
-  var menuType;
-  var body;
-  var windowWidth;
-  var shadow;
-  var touchX = null;
-  var touchY = null;
-  var slideX = null;
-  var slideY = null;
-  var movX   = null;
-  var movY   = null;
-  var angle  = null;
+  config: {
+    breakpoint: 600,
+    triggerId: 'swibe-trigger',
+    menuId: 'swibe-menu',
+    shadowId: 'swibe-shadow',
+    menuOpenClass: 'swibe-menu--open',
+    shadowOpenCLass: 'swibe-shadow--enabled'
+  },
 
-  // Strings
-  var strings = {
-      triggerId      : 'swibe-trigger',
-      menuId         : 'swibe-menu',
-      shadowClass    : 'swibe-shadow',
-      menuOpenClass  : 'swibe-menu--open',
-      shadowOpenCLass: 'swibe-shadow--enabled'
-    };
+  load() {
+    document.addEventListener('DOMContentLoaded', function() {
+      swibe.loadQueue();
+      return true;
+    });
+    window.addEventListener('resize', swibe.resize);
+  },
 
-
-
-  // Load menu after it is loaded the DOM
-  window.addEventListener('DOMContentLoaded', loadMenu, false);
-  // Execute the 'windowResize' function when the screen size change
-  window.addEventListener('resize', windowResize, false);
-
-  // FUNCTIONS
-  /**
-   * This function load all necesary DOM element
-   */
-  function loadMenu() {
-    body = document.body; // Get the body element
-    menu = document.getElementById(strings.menuId); // Get the menu element by the ID
-    trigger = document.getElementById(strings.triggerId); // Get the trigger element by the ID
-    windowWidth = screen.width; // This is for detect only horizontal resize after
-
-    // If all elements exist, check the menu type
-    if (body && menu && trigger) {
-
-      if (checkMenuType() == 'default') {
-        trigger.addEventListener('click', openMenu, false);
-        body.addEventListener('touchstart', touchStart, false);
-        body.addEventListener('touchmove', slideMenu, false);
-        createShadow();
-        return true;
-      }
-      else if (checkMenuType() == 'responsive') {
-        trigger.removeEventListener('click', openMenu, false);
-        body.removeEventListener('touchstart', touchStart, false);
-        body.removeEventListener('touchmove', slideMenu, false);
-        return true;
-      }
-  
-    }
-    // Debug message
-    else if(menu || trigger) {
-      console.warn("[SWIBE] Some needed elements of the DOM aren't loaded correctly. Review the HTML Id's and the docs: https://github.com/barcia/swibe/blob/master/README.md");
-      return false;
-    }
-    // Debug message
-    else if((! menu) && (! trigger)) {
-      console.info("[SWIBE] You are loading the Swibe menu, but you don't have the trigger and menu elements (or you don't have the needed Id's). Review the docs: https://github.com/barcia/swibe/blob/master/README.md");
-      return false;
-    }
-
-  }
-
-
-
-    /**
-     *  This function return us the type of menu
-     *  @return {string} [returns 'default' or 'responsive']
-     */
-    function checkMenuType() {
-
-      // Get the CSS properties for check the menu type
-      var triggerDisplay = window.getComputedStyle(trigger, null).getPropertyValue('display');
-      var menuLeft = window.getComputedStyle(menu, null).getPropertyValue('left'); 
-
-      // The menu is the "responsive" variant
-      if ((triggerDisplay == 'none') && ((! (parseInt(menuLeft.substring(0, menuLeft.length - 2)) < 0 )))) {
-        return 'responsive';
-      } 
-      // Debug message
-      else if ((triggerDisplay == 'none') || ((! (parseInt(menuLeft.substring(0, menuLeft.length - 2)) < 0 )))) {
-        console.warn("[SWIBE] You have one element (trigger or menu) with the 'responsive' variant but the other haven't it. Review the HTML classes and the docs: https://github.com/barcia/swibe/blob/master/README.md");
+    loadQueue() {
+      swibe.windowWidth = screen.width;
+      if (! swibe.config.breakpoint || (swibe.windowWidth < swibe.config.breakpoint)) {
+        swibe.menu.getItems();
+        if (swibe.menu.check()) {
+          swibe.shadow.create();
+          swibe.triggerElement.addEventListener('click', swibe.open);
+          swibe.bodyElement.addEventListener('touchstart', swibe.touch.tap);
+          swibe.bodyElement.addEventListener('touchmove', swibe.touch.slide);
+          return true;
+        };
+        // This open the menu at the beginning, if you choose them.
+        if (swibe.status) {
+          swibe.openQueue();
+        }
+      } else {
         return false;
       }
-      else { // Is default menu
-        return 'default';
+    },
+
+
+  open() {
+    if (! swibe.status && (! swibe.config.breakpoint || (swibe.windowWidth < swibe.config.breakpoint))) {
+      swibe.openQueue();
+    } else {
+      return false;
+    }
+  },
+
+    openQueue() {
+      swibe.menu.open();
+      swibe.shadow.enable();
+      swibe.bodyElement.style.overflowY='hidden';
+      swibe.status = true;
+    },
+
+
+  close() {
+    if (swibe.status) {
+      swibe.closeQueue();
+    }
+  },
+
+    closeQueue() {
+      swibe.menu.close();
+      swibe.shadow.disable();
+      swibe.bodyElement.style.overflowY=null;
+      swibe.status = false;
+    },
+
+  resize() {
+    if (swibe.windowWidth > screen.width) {
+        swibe.close();
+    };
+    swibe.loadQueue();
+  },
+
+
+  menu: {
+    // Get all needed HTML elements
+    getItems() {
+      swibe.bodyElement = document.body; // Get the body element
+      swibe.menuElement = document.getElementById(swibe.config.menuId);
+      swibe.triggerElement = document.getElementById(swibe.config.triggerId);
+    },
+
+    // Check if all needed elements are loaded correctly
+    check() {
+      if (swibe.bodyElement && swibe.triggerElement && swibe.menuElement) {
+        return true;
+      } else {
+        console.warn("[SWIBE] Some needed elements of the DOM aren't loaded correctly. Review the HTML Id's and the docs: https://github.com/barcia/swibe/blob/master/README.md");
+        return false;
       }
+    },
+
+    open() {
+        swibe.menuElement.classList.add(swibe.config.menuOpenClass);
+    },
+
+    close() {
+        swibe.menuElement.classList.remove(swibe.config.menuOpenClass);
+    },
+  },
+
+
+  shadow: {
+    create() {
+      if (! swibe.shadowElement) {
+        swibe.shadowElement = document.createElement('div');
+        swibe.shadowElement.id = swibe.config.shadowId;
+        swibe.shadowElement.addEventListener('click', swibe.close);
+        swibe.bodyElement.appendChild(swibe.shadowElement);
+      };
+    },
+
+    enable() {
+      swibe.shadowElement.classList.add(swibe.config.shadowOpenCLass);
+    },
+
+    disable() {
+      swibe.shadowElement.classList.remove(swibe.config.shadowOpenCLass);
+    }
+  },
+
+
+  touch: {
+    tap(event) {
+      this.tapX = event.targetTouches[0].clientX;
+      this.tapY = event.targetTouches[0].clientY;
+      this.slideX = this.tapX;
+      this.slideY = this.tapY;
+    },
+
+    slide() {
+      this.slideX = event.targetTouches[0].clientX; // The last X coord where we touch when slide
+      this.slideY = event.targetTouches[0].clientY; // The last Y coord where we touch when slide
+
+      if ((swibe.touch.gre(this.tapX, this.tapY, this.slideX, this.slideY)) === 'open') {
+          swibe.open();
+        } else if ((swibe.touch.gre(this.tapX, this.tapY, this.slideX, this.slideY)) === 'close') {
+          swibe.close();
+        };
+
+    },
+
+    calcDist(initialPoint, finalPoint) {
+      return finalPoint - initialPoint;
+    },
+
+    calcAngle(x, y) {
+      return ((Math.atan(y / x) * 180) / Math.PI) + 90;
+    },
+
+    // Gesture Recognition Engine
+    gre(tapX, tapY, slideX, slideY) {
+
+      this.distX = swibe.touch.calcDist(tapX, slideX);
+      this.distY = swibe.touch.calcDist(tapY, slideY);
+      this.angle = swibe.touch.calcAngle(this.distX, this.distY);
+
+      console.log('Angle: '+this.distX * -1);
+
+      this.openCond1 = tapX < 20;
+      this.openCond2 = slideX > tapX;
+
+      if (this.openCond1 && this.openCond2) {
+        return 'open';
+      };
+
+      this.closeCond1 = slideX < tapX;
+      this.closeCond2 = this.distY < 280;
+      this.closeCond3 = this.angle > (90 - 35);
+      this.closeCond4 = this.angle < (90 + 35);
+      this.closeCond5 = this.distX < -30;
+
+      if (this.closeCond1 && this.closeCond2 && this.closeCond3 && this.closeCond4 && this.closeCond5) {
+        return 'close';
+      };
 
     }
-
-
-
-    /**
-     *  Detect only the horizontal resize, and close the menu only if it 
-     *  increases because is when the menu can change its type
-     */
-    function windowResize() {
-      if (windowWidth < screen.width) {
-          closeMenu();
-      }
-      loadMenu();
-      return;
-    }
-
-
-
-    /**
-     * Creates the DOM item who will be the shadow when menu opens. We append
-     * a class to style it with CSS (that minify it at beginning).
-     *
-     * When we click(or touch) the shadow, the menu closes.
-     */
-    function createShadow() {
-      if (shadow == undefined) {
-        shadow = document.createElement('div');
-        body.appendChild(shadow);
-        shadow.classList.add(strings.shadowClass);
-        shadow.addEventListener('click', closeMenu, false);
-      }
-    }
-
-
-
-  // Open the menu
-  function openMenu() {
-    menu.classList.add(strings.menuOpenClass); // Add menu open class
-    shadow.classList.add(strings.shadowOpenCLass); // Enable shadow
-    body.style.overflowY='hidden'; // Remove body vertical scroll
   }
 
-
-
-  // Close the menu
-  function closeMenu() {
-    menu.classList.remove(strings.menuOpenClass); // Remove menu open class
-    body.style.overflowY=null; // Restore body scroll to default
-    if (! (shadow == undefined)) {
-      shadow.classList.remove(strings.shadowOpenCLass); // Disable shadow
-    }
-  }
+};
 
 
 
-  //Detects when we touch the screen and save the coords
-  function touchStart(event) {
-    touchX = event.targetTouches[0].clientX;
-    touchY = event.targetTouches[0].clientY;
-    slideX = touchX;
-    slideY = touchY;
-  }
-
-
-
-  // Detects when we slide our finger over the screen
-  function slideMenu(event) {
-
-    slideX = event.targetTouches[0].clientX; // The last X coord where we touch when slide
-    slideY = event.targetTouches[0].clientY; // The last Y coord where we touch when slide
-
-    movX = calcMov(touchX, slideX); // Calculates how we move in X
-    movY = calcMov(touchY, slideY); // Calculates how we move in Y
-
-    angle = calcAngle(movY, movX); // Calc the angle with x-axis
-    
-    if (angle < 0) {
-      angle *= -1; // Convert angle to positive
-    }
-    
-    if (swibeGRE() === open) {
-      openMenu();
-    }
-    
-    if (swibeGRE() === close) {
-      closeMenu();
-    }
-  }
-
-    // Calculates how we move
-    function calcMov(initialPoint, finalPoint) {
-      var mov = (finalPoint - initialPoint);
-      return mov;
-    }
-
-    // Calculates the angle at which we move
-    function calcAngle(X, Y) {
-      return Math.atan(X / Y) * 180 / Math.PI;
-    }
-    
-    // Swibe Gesture Recognition Engine.
-    // A number of variables and conditions who try to know what you want to do
-    // when you slide your finger.
-    function swibeGRE() {
-      
-      // Open conditions
-      var openCond1 = (touchX < 20) ? true : false; // Touch in left side of screen
-      var openCond2 = (slideX > touchX) ? true : false; // Slide right
-
-      var openConditions = openCond1 && openCond2;
-
-
-      // Close conditions
-      var closeCond1 = (slideX < touchX) ? true : false; // Slide left
-      var closeCond2 = (movY < 280) ? true : false; // Don't slide much in Y
-      var closeCond3_ratio = 1.3; // If you slide with more angle, you have to slide more in X
-      var closeCond3_1 = ((angle < 10) && (-movX) > (10 * closeCond3_ratio)) ? true : false;
-      var closeCond3_2 = ((angle < 20) && (-movX) > (20 * closeCond3_ratio)) ? true : false;
-      var closeCond3_3 = ((angle < 30) && (-movX) > (30 * closeCond3_ratio)) ? true : false;
-      var closeCond3_4 = ((angle < 40) && (-movX) > (40 * closeCond3_ratio)) ? true : false;
-      var closeCond3_5 = ((angle < 50) && (-movX) > (50 * closeCond3_ratio)) ? true : false;
-      var closeCond3_6 = ((angle < 60) && (-movX) > (60 * closeCond3_ratio)) ? true : false;
-      var closeCond3_7 = ((angle < 70) && (-movX) > (70 * closeCond3_ratio)) ? true : false;
-      var closeCond3_8 = ((angle < 80) && (-movX) > (80 * closeCond3_ratio)) ? true : false;
-      var closeCond3_9 = ((angle < 90) && (-movX) > (90 * closeCond3_ratio)) ? true : false;
-
-      var closeConditions = closeCond1 && closeCond2 && (closeCond3_1 || closeCond3_2 || closeCond3_3 || closeCond3_4 || closeCond3_5 || closeCond3_6 || closeCond3_7 || closeCond3_8 || closeCond3_9);
-
-
-      if (openConditions) {
-        return open;
-      }
-
-      if (closeConditions) {
-        return close;
-      }
-    }
-
-}
+swibe.load();

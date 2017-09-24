@@ -1,5 +1,5 @@
 /**
- * Swibe v.3.2.0
+ * Swibe v.3.3.0
  * MIT License
  * https://github.com/barcia/swibe
  * Made in Galiza by Iván Barcia | @bartzia | barcia.cc
@@ -19,7 +19,7 @@ $swibe-shadow-opacity     : .5;
 $swibe-bp-extra-large: 1366px !default; // => Desktop
 $swibe-bp-large      : 1024px !default; // => Tablet horizontal
 $swibe-bp-medium     : 800px !default;  // => Tablet Vertical & Mobile Horizontal
-$swibe-bp-small      : 450px !default; 
+$swibe-bp-small      : 450px !default;
 
 // MENU
 // 1. The menu is visible from the beginning, but moved to the left of the screen
@@ -49,7 +49,7 @@ $swibe-bp-small      : 450px !default;
 // SHADOW
 // 1. The shadow is created from the beginning, but whithout size
 // 2. property duration timing-function
-.swibe-shadow {
+#swibe-shadow {
   display: block;
   position: fixed;
   top: 0;
