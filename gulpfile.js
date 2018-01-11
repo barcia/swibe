@@ -5,9 +5,8 @@ var notify       = require("gulp-notify");
 var plumber      = require('gulp-plumber');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
-var uglify       = require('gulp-uglify');
+let uglify       = require('gulp-uglify-es').default;
 var postcss      = require('gulp-postcss');
-var autoprefixer = require('autoprefixer');
 var cssnano      = require('cssnano');
 var browserSync  = require('browser-sync').create();
 
@@ -35,21 +34,19 @@ var onError = function (err) {
 // Compile Scss files to CSS, and apply PostCSS plugins
 gulp.task(cssTask, function () {
   var postcssPlugins = [
-    autoprefixer({
-      browsers: ['last 2 version']
-    }),
     cssnano({
-      autoprefixer: false,
-      safe: true,
-      sourcemap: false
+      autoprefixer: false
     })
   ];
-  var sassOptions = {};
+  var sassOptions = {
+    outputStyle: 'expanded'
+  };
 
   return gulp.src(sourcePath+'/swibe.scss')
   .pipe(plumber({ errorHandle: onError }))
   .pipe(sourcemaps.init())
   .pipe(sass(sassOptions).on('error', onError))
+  .pipe(gulp.dest(distPath))
   .pipe(postcss(postcssPlugins))
   .pipe(rename({
     suffix: '.min'
@@ -62,8 +59,10 @@ gulp.task(cssTask, function () {
 
 // Concatenate and minify JS files
 gulp.task(jsTask, function() {
-  return gulp.src(sourcePath+'swibe*.js')
+  return gulp.src(sourcePath+'swibe.js')
+  .pipe(sourcemaps.init())
   .pipe(uglify())
+  .pipe(sourcemaps.write('./'))
   .pipe(rename({
     suffix: '.min'
   }))

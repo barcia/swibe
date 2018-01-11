@@ -1,15 +1,17 @@
+# Dev
 .tmp
 release
+*.map
 test.html
 test.css
 test.js
 
 # Sass
 .sass-cache
-*.css.map
 
-# Grunt
+# Node
 node_modules
+package-lock.json
 
 # Linux systems
 .directory

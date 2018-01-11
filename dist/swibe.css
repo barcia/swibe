@@ -1,0 +1,72 @@
+@charset "UTF-8";
+/**
+ * Swibe v.3.3.0
+ * MIT License
+ * https://github.com/barcia/swibe
+ * Made in Galiza by Iván Barcia | @bartzia | barcia.cc
+ */
+/** MENU
+ * 4. The menu is visible from the beginning, but moved to the left of the screen
+ */
+.swibe-menu {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  max-width: 300px;
+  height: 100%;
+  transition: transform 300ms ease-in-out, max-width 300ms ease-in-out;
+  will-change: transform;
+  overflow-y: auto;
+  z-index: 999;
+  /* To prevent the menu be wider than the screen */
+}
+
+.swibe-menu.swibe-menu--open {
+  transform: translateX(300px);
+  max-width: calc(100% - 40px);
+}
+
+/** SHADOW
+ * 5, 6. The shadow is created from the beginning, but whithout size.
+ *
+ * Keep the timing-functions 'step-end', because are required for a good
+ * performance of the shadow.
+ */
+#swibe-shadow {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  background-color: transparent;
+  z-index: 998;
+  will-change: background-color;
+  transition: background-color 300ms ease-in-out, height 300ms step-end, width 300ms step-end;
+}
+
+#swibe-shadow.swibe-shadow--enabled {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: background-color 300ms ease-in-out, height 300ms step-start, width 300ms step-start;
+}
+
+/** VARIANTS
+ * Add this classes to the menu and the trigger if you use the breakpoint (also
+ * enable in the JavaScript file)
+ */
+@media (min-width: 450px) {
+  .swibe-menu--responsive {
+    position: relative;
+    left: 0;
+  }
+}
+
+@media (min-width: 450px) {
+  .swibe-trigger--responsive {
+    display: none;
+  }
+}

@@ -1,9 +1,11 @@
 # Changelog
 
-## [3.3.0](https://github.com/barcia/swibe/releases/tag/3.3.0) - 2017-09-24
+## [3.3.0](https://github.com/barcia/swibe/releases/tag/3.3.0) - 2018-01-12
 ### Changed
 - Changed JS code to objects
 - Now the Swibe script not need the 'defer' atribute.
+- Many code improvements
+
 
 ## [3.2.0](https://github.com/barcia/swibe/releases/tag/3.2.0) - 2017-02-06
 ### Added

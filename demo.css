@@ -1,11 +1,8 @@
 
-/* This CSS code isn't necesary, but all looks better */
+/* This CSS code isn't necesary, is only for the demo */
 
-/* 1. In a website without content, like demo.html, not work the slide */
-body, html {
-  margin: 0;
-  height: 100%; /* 1 */
-  width: 100%; /* 1 */
+#swibe-trigger {
+  padding: 10px 20px;
 }
 
 .swibe-menu {
@@ -31,13 +28,4 @@ body, html {
   color: inherit;
   background-color: #ddd;
   text-decoration: none;
-}
-
-
-.demo-info {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 200px;
-  color: hsla(0, 0%, 0%, .3);
 }
