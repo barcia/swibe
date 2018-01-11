@@ -1,5 +1,6 @@
 # Swibe
 ### v3.2.0
+[![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg)]()
 A simple slide menu in CSS and JavaScript for modern interfaces and cool projects
 
 ## Table of contents
