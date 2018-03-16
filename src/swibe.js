@@ -1,9 +1,10 @@
 /**!
- * Swibe v.3.3.0
+ * Swibe v.3.4.0
  * MIT License
  * https://github.com/barcia/swibe
- * Made in Galiza by Iván Barcia | @bartzia | barcia.cc
+ * By Iván Barcia | @bartzia | barcia.cc
  */
+
 
 
 /* Swibe Menu */
@@ -23,7 +24,7 @@ const swibe = {
 	 */
 	config: {
 		initialStatus: false, /* 1 */
-		//breakpoint: 600, /* 2 */
+		// breakpoint: 600, /* 2 */
 		triggerId: 'swibe-trigger', /* 3 */
 		menuId: 'swibe-menu', /* 3 */
 		menuOpenClass: 'swibe-menu--open', /* 3 */
