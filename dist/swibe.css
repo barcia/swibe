@@ -1,35 +1,50 @@
 @charset "UTF-8";
 /**
- * Swibe v.3.3.0
+ * Swibe v.3.4.0
  * MIT License
  * https://github.com/barcia/swibe
- * Made in Galiza by Iván Barcia | @bartzia | barcia.cc
+ * By Iván Barcia | @bartzia | barcia.cc
  */
+/** CONFIG
+  * 1. The menu width. In small screens, it never will fill all the screen.
+  * 2. The time in seconds to open or close the menu.
+  * 3. The timing-function of the animation.
+  * 4. The opacity of the shadow behind the menu.
+	*/
+:root {
+  --swibe-width: 300px;
+  /* 1 */
+  --swibe-transition-duration: 300ms;
+  /* 2 */
+  --swibe-transition-function: ease-in-out;
+  /* 3 */
+  --swibe-zindex: 999;
+  --swibe-shadow-opacity: .5;
+  /* 4 */
+  --swibe-shadow-zindex: calc(var(--swibe-zindex) - 1); }
+
 /** MENU
- * 4. The menu is visible from the beginning, but moved to the left of the screen
+ * 1. The menu is visible from the beginning, but moved to the left of the screen
  */
-.swibe-menu {
+#swibe-menu {
   display: block;
   position: fixed;
   top: 0;
-  left: -300px;
-  width: 300px;
-  max-width: 300px;
-  height: 100%;
-  transition: transform 300ms ease-in-out, max-width 300ms ease-in-out;
+  left: calc(var(--swibe-width) * -1);
+  /* 1 */
+  width: var(--swibe-width);
+  max-width: calc(100vw - 40px);
+  height: 100vh;
+  transition: transform var(--swibe-transition-duration) var(--swibe-transition-function);
   will-change: transform;
   overflow-y: auto;
-  z-index: 999;
-  /* To prevent the menu be wider than the screen */
-}
-
-.swibe-menu.swibe-menu--open {
-  transform: translateX(300px);
-  max-width: calc(100% - 40px);
-}
+  z-index: var(--swibe-zindex);
+  /* To prevent the menu be wider than the screen */ }
+  #swibe-menu.swibe-menu--open {
+    transform: translateX(var(--swibe-width)); }
 
 /** SHADOW
- * 5, 6. The shadow is created from the beginning, but whithout size.
+ * 1. The shadow is created from the beginning, but whithout size.
  *
  * Keep the timing-functions 'step-end', because are required for a good
  * performance of the shadow.
@@ -40,33 +55,15 @@
   top: 0;
   left: 0;
   width: 0;
+  /* 1 */
   height: 0;
+  /* 1 */
   background-color: transparent;
-  z-index: 998;
+  z-index: var(--swibe-shadow-zindex);
   will-change: background-color;
-  transition: background-color 300ms ease-in-out, height 300ms step-end, width 300ms step-end;
-}
-
-#swibe-shadow.swibe-shadow--enabled {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  transition: background-color 300ms ease-in-out, height 300ms step-start, width 300ms step-start;
-}
-
-/** VARIANTS
- * Add this classes to the menu and the trigger if you use the breakpoint (also
- * enable in the JavaScript file)
- */
-@media (min-width: 450px) {
-  .swibe-menu--responsive {
-    position: relative;
-    left: 0;
-  }
-}
-
-@media (min-width: 450px) {
-  .swibe-trigger--responsive {
-    display: none;
-  }
-}
+  transition: background-color var(--swibe-transition-duration) var(--swibe-transition-function), height var(--swibe-transition-duration) step-end, width var(--swibe-transition-duration) step-end; }
+  #swibe-shadow.swibe-shadow--enabled {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: background-color var(--swibe-transition-duration) var(--swibe-transition-function), height var(--swibe-transition-duration) step-start, width var(--swibe-transition-duration) step-start; }

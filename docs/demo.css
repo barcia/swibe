@@ -1,0 +1,38 @@
+
+/* This CSS code isn't necesary, is only for the demo */
+
+#swibe-trigger {
+  height: 40px;
+  width: 80px;
+}
+
+#swibe-menu {
+  background-color: white;
+}
+
+#swibe-menu ul {
+  padding: 8px 0;
+  list-style-type: none;
+  margin: 0;
+}
+
+#swibe-menu a {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  padding: 0 16px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
+#swibe-menu a:hover {
+  background-color: #ddd;
+}
+
+
+
+/* You can easily modify the Swibe Menu adding it a class and modifying the CSS Variables */
+.MyMenu {
+  --swibe-width: 350px;
+}
