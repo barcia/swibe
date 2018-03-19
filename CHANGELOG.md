@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.4.0](https://github.com/barcia/swibe/releases/tag/3.3.0) - 2018-03-16
+### Changed
+- Added CSS Custom Properties in CSS
+- Now the CSS only use the ID, not a class.
+- Rewrite all gulpfile.js
+
 ## [3.3.0](https://github.com/barcia/swibe/releases/tag/3.3.0) - 2018-01-12
 ### Changed
 - Changed JS code to objects

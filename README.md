@@ -1,98 +1,40 @@
 # Swibe
-### v3.2.0
-[![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg)]()
 A simple slide menu in CSS and JavaScript for modern interfaces and cool projects
 
-## Table of contents
-* [Swibe](#swibe)
-  * [About](#about)
-  * [Features](#features)
-* [Getting Started](#getting-started)
-* [Configuration](#configuration)
-  * [*Responsive Sensitive* mode](#responsive-sensitive-mode)
-  * [UI Settings](#ui-settings)
-  * [*Gulp* commands](#gulp-commands)
-* [Support](#support)
-* [Contributing](#contributing)
-* [Changelog](#changelog)
-* [Credits](#credits)
-* [License](#license)
-
-### About
-* Project site: [projects.barcia.cc/bramework](https://projects.barcia.cc/swibe)
-* Download: [(lastest version)](https://github.com/barcia/swibe/releases/latest)
-* Demo: [demo.html](https://cdn.rawgit.com/barcia/swibe/master/demo.html)
-* Code: [github.com/barcia/swibe](https://github.com/barcia/swibe)
-* Docs: [README.md](https://github.com/barcia/swibe/blob/master/README.md)
-* Issues: [github.com/barcia/swibe/issues](https://github.com/barcia/swibe/issues)
-* Community: [Google+ community](https://plus.google.com/communities/104938291205143609131/stream/8879dc2d-fed4-43a4-ba36-eca77af7d9db?hl=es-419)
+## ℹ️ About
+- Repository: https://github.com/barcia/bramework
+- Support: https://barcia.cc/contacto
+- Changelog: [CHANGELOG.md](https://github.com/barcia/swibe/blob/master/CHANGELOG.md)
 
 
-### Features
+
+## 📍 Features
 * **Simple** and hackable
-* **Lighweight**: 2.7KiB of JS and 1014B of CSS
+* **Lighweight**: 3.1KiB of JS and 1.2KiB of CSS
 * **Vanilla JavaScript**, whithout heavy dependencies
-* **Accessible** for people who use screen readers or just keyboards
 * All fluid transitions and animations **use only CSS3**
 * Includes **touch events** to open and close the menu with natural gestures in touchscreen devices
-* With the _Swibe Gesture Recognition Engine_
 * With a ***responsive sensitive*** mode
 * Easily **configurable**
 * **Open Source** under MIT License
 
 
-## Getting Started
 
-**0. Download the [last release](https://github.com/barcia/swibe/releases/latest)**
+## 🛫 Getting Started
 
-
-**1. Add `swibe.min.js` and `swibe.min.css` to your webpage.**
-
-```html
-<link rel="stylesheet" href="swibe.min.css">
-<script type="text/javascript" src="swibe.min.js"></script>
-```
-
-
-**2. Add the _id_ `swibe-trigger` to the element who will open the menu.**
-
-```html
-<button id="swibe-trigger">Menu</button>
-```
-
-
-**3. Add the _id_ `swibe-menu` and _class_ `swibe-menu` to the element who will contain the menu (recommends `nav`).**
-
-```html
-<nav class="swibe-menu" id="swibe-menu">
-  <ul>
-    <li><a>Item</a></li>
-    <li><a>Item</a></li>
-    <li><a>Item</a></li>
-    <li><a>Item</a></li>
-  </ul>
-</nav>
-```
-
-
-> You can see this example working in [demo.html](https://github.com/barcia/swibe/blob/master/demo.html)
-
-
-## Configuration
-
-
-### *Responsive Sensitive* mode
-The *Responsive Sensitive* mode is for when we want the menu to be **hidden on small screens, but visible on large screens**. We can do this only adding two classes:
-
-* Add the _class_  `swibe-trigger--responsive` to the element who will open the menu:
+1. [Download the last release](https://github.com/barcia/swibe/releases/latest)
+2. Add `swibe.min.js` and `swibe.min.css` to yout webpage.
   ```html
-  <button id="swibe-trigger  swibe-trigger--responsive">Menu</button>
+  <link rel="stylesheet" href="swibe.min.css">
+  <script type="text/javascript" src="swibe.min.js"></script>
   ```
-
-* Add the _class_ `swibe-menu--responsive` to the element who will contain the menu.
-
+3. Add the **id** `swibe-trigger` to the element who will open the menu.
   ```html
-  <nav class="swibe-menu  swibe-menu--responsive" id="swibe-menu">
+  <button id="swibe-trigger">Menu</button>
+  ```
+4. Add the *id* `swibe-menu` to the element who will contain the menu
+  ```html
+  <nav id="swibe-menu">
     <ul>
       <li><a>Item</a></li>
       <li><a>Item</a></li>
@@ -102,45 +44,63 @@ The *Responsive Sensitive* mode is for when we want the menu to be **hidden on s
   </nav>
   ```
 
-* You can change the **point when the menu change** between visible and invisible changing the **media queries** in the `.css` (or in the `.scss`) file.
+> You can see this example working in [demo.html](https://github.com/barcia/swibe/blob/master/demo.html)
+s
 
-> You can see this example working in [demo-responsive.html](https://github.com/barcia/swibe/blob/master/demo-responsive.html)
+
+
+## 🔧 Configuration
 
 
 ### UI Settings
-All **UI settings** are in the `.css` file. (Better change it in `.scss` file, and compile it to .css)
+All **UI settings** are in the `.css` file. Better and a class to your Swibe Menu and modify the base CSS Variables or add your own styles.
 
-Interesting variables in `swibe.scss`:
+Interesting CSS Variables:
 
-* `$swibe-width`: The **width of menu**. (Default: `300px`)
-* `$swibe-transition-duration`: The animation duration in ms. (Default: `300ms`)
-* `$swibe-transition-function`: The speed curve of an animation. (Default: `ease-in-out`)
-* `$swibe-shadow-opacity`: The shadow opacity (from `0` to `1`). (Default: `.5`)
-
+* `--swibe-width`: The **width of menu**. (Default: `300px`)
+* `--swibe-transition-duration`: The animation duration in ms. (Default: `300ms`)
+* `--swibe-transition-function`: The speed curve of an animation. (Default: `ease-in-out`)
+* `--swibe-shadow-opacity`: The shadow opacity (from `0` to `1`). (Default: `.5`)
 
 > If you want add your own styles, you can use the `.swibe-menu` class or add your own classes.
 
 
-### *Gulp* commands
-* **`gulp`** - Active gulp watch and when any `.swibe.scss` or `swibe.js` file change, execute the following tasks: `gulp css`, `gulp js`
-* **`gulp sync`** - Create a local server for sync and test files in many devices in real time.
-* **`gulp css`** - Process the `swibe.scss` and the PostCSS tasks creating `.tmp/swibe.css` and `swibe.min.css`
-* **`gulp js`** - Minify `swibe.js` creating `swibe.min.js`
-* **`gulp all`** - Execute `gulp css` and `gulp js` tasks
+### *Responsive Sensitive* mode
+The *Responsive Sensitive* mode is for when we want the menu to work only below a screen width
 
-## Support
-Visit the [Google+ Community](https://plus.google.com/communities/104938291205143609131/stream/8879dc2d-fed4-43a4-ba36-eca77af7d9db?hl=es-419)
+You only have to modify `swibe.js` adding the `breakpoint` option in `config` object:
 
-## Contributing
-You can notify bugs and propose new features in the project [issues](https://github.com/barcia/swibe/issues) section.
+For example, add `breakpoint: 600` to do work the menu only under 600px screen width.
 
 
-## Changelog
-See [CHANGELOG.md](https://github.com/barcia/swibe/blob/master/CHANGELOG.md)
 
-## Credits
-Developed with ❤ by Iván Barcia in Galiza, SPAIN.   
-[Web](https://barcia.cc) · [Email](mailto:ivan@barcia.cc) · [Twitter](http://www.twitter.com/bartzia) · [GitHub](http://www.github.com/barcia) · [Google+](https://plus.google.com/+IvanBarcia)
+## 💻 Developing
 
-## License
-Under **MIT License**. See [LICENSE.md](https://github.com/barcia/THEPROJECT/blob/master/LICENSE.md) for more info.
+### Prerequisites
+You must have installed [Node](https://nodejs.org/en/download/), [NPM](https://www.npmjs.com/get-npm) and [Gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
+
+### Setting up development environment
+Normally, you only must have Gulp *watching* with the `gulp` command, and write your code in all files inside */src/*
+
+### Building
+This project use [Gulp](https://gulpjs.com) as task runner.
+
+**Development tasks:**
+- `gulp` - The default task. Build all, create a light web server, put in *watch* all source files and reload de browser with any change.
+
+- `gulp build` - Execute all this tasks: *gulp css*, *gulp js*.
+
+- `gulp css` - Process *swibe.scss* file and apply the PostCSS plugins creating *style.css* and *style.min.css* in */dist/*.
+
+- `gulp js` - Process *swibe.js* file creating *script.min.js* in */dist/*.
+
+
+
+## 🤓 Credits
+Developed by Iván Barcia  
+[Web](https://barcia.cc) · [Email](mailto:ivan@barcia.cc) · [Twitter](http://www.twitter.com/bartzia) · [GitHub](http://www.github.com/barcia)
+
+
+
+## 📄 License
+This project is under [MIT License](https://github.com/barcia/bramework/blob/master/LICENSE)
