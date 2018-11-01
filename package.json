@@ -17,8 +17,9 @@
     "build": "run-s clean build:css build:js build:docs",
     "watch:js": "nodemon --watch src/swibe.js --exec 'npm run build:js'",
     "watch:css": "nodemon --watch src/swibe.scss --exec 'npm run build:css'",
+    "watch:docs": "npm run build:docs -- --watch",
     "server": "browser-sync start --server './docs/demo/' --browser 'firefox developer edition' --watch --files 'dist/**/*'",
-    "dev": "npm run clean && run-p watch:js watch:css server"
+    "dev": "npm run clean && run-p watch:js watch:css watch:docs server"
   },
   "devDependencies": {
     "browser-sync": "^2.26.3",
