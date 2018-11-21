@@ -1,4 +1,10 @@
 # Changelog
+## [4.0.0](https://github.com/barcia/swibe/releases/tag/4.0.0) - 2018-11-21
+### Changed
+- Rewrite Swibe.js
+- Remove Sass file. Now all basic styles are added with JS
+- Prepare package for upload to [npmjs.com](https://npmjs.com)
+
 
 ## [3.4.0](https://github.com/barcia/swibe/releases/tag/3.3.0) - 2018-03-16
 ### Changed

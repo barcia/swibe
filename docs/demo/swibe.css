@@ -1,7 +1,10 @@
 
-/* This CSS code isn't necesary, is only for the demo */
+/*
+ * This CSS code isn't necesary, is only for the demo. You can use it.
+ * MIT License
+ */
 
-#swibe-trigger {
+#swibe-menu-trigger {
   height: 40px;
   width: 80px;
 }
@@ -28,11 +31,4 @@
 
 #swibe-menu a:hover {
   background-color: #ddd;
-}
-
-
-
-/* You can easily modify the Swibe Menu adding it a class and modifying the CSS Variables */
-.MyMenu {
-  --swibe-width: 350px;
 }

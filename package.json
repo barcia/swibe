@@ -1,30 +1,44 @@
 {
   "name": "swibe",
   "version": "4.0.0",
+  "license": "MIT",
   "description": "A simple swipe menu",
+  "homepage": "http://barcia.github.io/swibe",
   "repository": "https://github.com/barcia/swibe",
+  "bugs": "https://github.com/barcia/swibe/issues",
   "author": {
     "name": "Iván Barcia",
     "email": "ivan@barcia.gal",
     "url": "https://barcia.gal"
   },
-  "license": "MIT",
+  "keywords": [
+    "js",
+    "javascript",
+    "menu",
+    "slide",
+    "swipe",
+    "swibe",
+    "bramework"
+  ],
+  "files": [
+    "LICENSE.md",
+    "README.md",
+    "swibe.js",
+    "swibe.min.js"
+  ],
   "scripts": {
-    "clean": "rm -rf dist && mkdir -p dist/",
-    "build:js": "uglifyjs src/swibe.js --mangle --compress  --output dist/swibe.min.js",
-    "build:css": "node-sass --output-style compressed --error-bell src/swibe.scss dist/swibe.min.css",
-    "build:docs": "cpx 'dist/{swibe.min.css,swibe.min.js}' docs/demo/",
-    "build": "run-s clean build:css build:js build:docs",
+    "clean": "rm -rf swibe.min.js",
+    "build:js": "uglifyjs ./swibe.js --mangle --compress  --output ./swibe.min.js",
+    "build:docs": "cpx './swibe.min.js' docs/demo/",
+    "build": "run-s clean build:js build:docs",
     "watch:js": "nodemon --watch src/swibe.js --exec 'npm run build:js'",
-    "watch:css": "nodemon --watch src/swibe.scss --exec 'npm run build:css'",
     "watch:docs": "npm run build:docs -- --watch",
-    "server": "browser-sync start --server './docs/demo/' --browser 'firefox developer edition' --watch --files 'dist/**/*'",
-    "dev": "npm run clean && run-p watch:js watch:css watch:docs server"
+    "server": "browser-sync start --server './docs/demo/' --browser 'firefox developer edition' --watch --files './docs/demo/**/*'",
+    "dev": "npm run clean && run-p watch:js watch:docs server"
   },
   "devDependencies": {
     "browser-sync": "^2.26.3",
     "cpx": "^1.5.0",
-    "node-sass": "^4.9.4",
     "nodemon": "^1.18.5",
     "npm-run-all": "^4.1.3",
     "uglify-es": "^3.3.9"
