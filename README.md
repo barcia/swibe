@@ -1,4 +1,6 @@
 # Swibe
+v.1.0.0-beta.1
+
 A simple slide menu in JS
 
 ## About

@@ -1,15 +1,12 @@
 # Changelog
-## 0.4.1 - 2018-11-21
+## 1.0.0-beta.1 - 2018-12-13
 ### Changed
-- Rewrite Swibe.js
-- Remove Sass file. Now all basic styles are added with JS
 - Prepare package for upload to [npmjs.com](https://npmjs.com)
 
 ## 0.4.0 - 2018-11-21
 ### Changed
 - Rewrite Swibe.js
 - Remove Sass file. Now all basic styles are added with JS
-- Prepare package for upload to [npmjs.com](https://npmjs.com)
 
 
 ## 0.3.4 - 2018-03-16
