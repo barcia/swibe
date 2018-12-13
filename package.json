@@ -1,6 +1,6 @@
 {
   "name": "swibe",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "license": "MIT",
   "description": "A simple swipe menu",
   "homepage": "http://barcia.github.io/swibe",
@@ -31,7 +31,7 @@
     "build:js": "uglifyjs ./swibe.js --mangle --compress  --output ./swibe.min.js",
     "build:docs": "cpx './swibe.min.js' docs/demo/",
     "build": "run-s clean build:js build:docs",
-    "watch:js": "nodemon --watch src/swibe.js --exec 'npm run build:js'",
+    "watch:js": "nodemon --watch ./swibe.js --exec 'npm run build:js'",
     "watch:docs": "npm run build:docs -- --watch",
     "server": "browser-sync start --server './docs/demo/' --browser 'firefox developer edition' --watch --files './docs/demo/**/*'",
     "dev": "npm run clean && run-p watch:js watch:docs server"
