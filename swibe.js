@@ -1,5 +1,5 @@
 /**
- * Swibe v.0.4.0
+ * Swibe v.0.4.1
  * MIT License
  * https://github.com/barcia/swibe
  */
@@ -216,6 +216,3 @@ function Swibe(customConfig) {
 		}
 	};
 }
-
-
-new Swibe();

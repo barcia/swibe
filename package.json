@@ -21,7 +21,7 @@
     "bramework"
   ],
   "files": [
-    "LICENSE.md",
+    "LICENSE",
     "README.md",
     "swibe.js",
     "swibe.min.js"
