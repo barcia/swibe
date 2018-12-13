@@ -1,32 +1,38 @@
 # Changelog
-## [4.0.0](https://github.com/barcia/swibe/releases/tag/4.0.0) - 2018-11-21
+## 0.4.1 - 2018-11-21
+### Changed
+- Rewrite Swibe.js
+- Remove Sass file. Now all basic styles are added with JS
+- Prepare package for upload to [npmjs.com](https://npmjs.com)
+
+## 0.4.0 - 2018-11-21
 ### Changed
 - Rewrite Swibe.js
 - Remove Sass file. Now all basic styles are added with JS
 - Prepare package for upload to [npmjs.com](https://npmjs.com)
 
 
-## [3.4.0](https://github.com/barcia/swibe/releases/tag/3.3.0) - 2018-03-16
+## 0.3.4 - 2018-03-16
 ### Changed
 - Added CSS Custom Properties in CSS
 - Now the CSS only use the ID, not a class.
 - Rewrite all gulpfile.js
 
-## [3.3.0](https://github.com/barcia/swibe/releases/tag/3.3.0) - 2018-01-12
+## 0.3.3 - 2018-01-12
 ### Changed
 - Changed JS code to objects
 - Now the Swibe script not need the 'defer' atribute.
 - Many code improvements
 
 
-## [3.2.0](https://github.com/barcia/swibe/releases/tag/3.2.0) - 2017-02-06
+## 0.3.2 - 2017-02-06
 ### Added
 - New *responsive* mode: for change menu visibility depending of screen size
 - Grunt files for development
 - New minified JS file: `swibe.min.js`
 
 
-## [3.1.0](https://github.com/barcia/swibe/releases/tag/3.1.0) - 2017-01-29
+## 0.3.1 - 2017-01-29
 ### Added
 - CHANGELOG.md file
 - Now the Swibe menu has releases :sunglasses:
