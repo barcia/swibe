@@ -1,5 +1,9 @@
 # Changelog
-## 1.0.0-beta.1 - 2018-12-13
+## [1.0.0-beta.2](https://github.com/barcia/swibe/releases/tag/1.0.0-beta.2) - 2018-12-14
+### Changed
+- Fix export module
+
+## [1.0.0-beta.1](https://github.com/barcia/swibe/releases/tag/1.0.0-beta.1) - 2018-12-13
 ### Changed
 - Prepare package for upload to [npmjs.com](https://npmjs.com)
 

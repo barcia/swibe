@@ -1,5 +1,5 @@
 /**
- * Swibe 1.0.0-beta.1
+ * Swibe 1.0.0-beta.2
  * MIT License
  * https://github.com/barcia/swibe
  */
@@ -216,3 +216,5 @@ function Swibe(customConfig) {
 		}
 	};
 }
+
+module.export = Swibe;
