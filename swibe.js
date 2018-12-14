@@ -1,10 +1,10 @@
 /**
- * Swibe 1.0.0-beta.2
+ * Swibe 1.0.0-beta.3
  * MIT License
  * https://github.com/barcia/swibe
  */
 
-function Swibe(customConfig) {
+export default function Swibe(customConfig) {
 
 	const defaultConfig = {
 		menu: "swibe-menu",
@@ -195,7 +195,7 @@ function Swibe(customConfig) {
 			// Add event to trigger
 			trigger.element.addEventListener('click', function () {
 				state ? action.close() : action.open();
-			});
+			}, false);
 
 			// Add touch events
 			document.addEventListener('touchstart', touch.tap, false);
@@ -215,6 +215,4 @@ function Swibe(customConfig) {
 			state = false;
 		}
 	};
-}
-
-module.export = Swibe;
+};

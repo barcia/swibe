@@ -1,4 +1,10 @@
 # Changelog
+## [1.0.0-beta.3](https://github.com/barcia/swibe/releases/tag/1.0.0-beta.3) - 2018-12-14
+### Changed
+- Modify demo to load new JavaScript module
+- Small tweaks
+
+
 ## [1.0.0-beta.2](https://github.com/barcia/swibe/releases/tag/1.0.0-beta.2) - 2018-12-14
 ### Changed
 - Fix export module

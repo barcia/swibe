@@ -1,5 +1,5 @@
 # Swibe
-v1.0.0-beta.2
+v1.0.0-beta.3
 
 A simple slide menu in JS
 
@@ -14,8 +14,14 @@ A simple slide menu in JS
 ## Getting Started
 
 1. [Download the last release](https://github.com/barcia/swibe/releases/latest) or install it with [npm](https://www.npmjs.com/package/swibe):
+  ```js
+  npm install swibe
+  ```
 
 2. Import *swibe.min.js* in your code.
+  ```js
+  import Swibe from './swibe.min.js';
+  ```
 
 3. Start a Swibe menu instace with `new Swibe();` (See [config](https://github.com/barcia/swibe#configuration))
 
