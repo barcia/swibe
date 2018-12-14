@@ -1,5 +1,5 @@
 # Swibe
-v.1.0.0-beta.1
+v1.0.0-beta.2
 
 A simple slide menu in JS
 

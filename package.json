@@ -1,6 +1,6 @@
 {
   "name": "swibe",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "license": "MIT",
   "description": "A simple swipe menu",
   "homepage": "http://barcia.github.io/swibe",
@@ -20,6 +20,7 @@
     "swibe",
     "bramework"
   ],
+  "main": "swibe.min.js",
   "files": [
     "LICENSE",
     "README.md",
