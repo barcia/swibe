@@ -41,7 +41,12 @@ export default function Swibe(customConfig) {
 	const responsive = {
 		mediaQueryList: window.matchMedia('(max-width: ' + config.breakpoint + 'px)'),
 		match(event) {
-			event.matches ? action.addListeners() : action.removeListeners();
+			if (event.matches) {
+				action.addListeners();
+			} else {
+				action.close();
+				action.removeListeners();
+			}
 		}
 	}
 
