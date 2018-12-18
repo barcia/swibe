@@ -1,9 +1,12 @@
 # Changelog
+## [1.0.0-beta.5](https://github.com/barcia/swibe/releases/tag/1.0.0-beta.5) - 2018-12-18
+### Added
+- Now the body scroll is disabled when the menu is open
+
 ## [1.0.0-beta.4](https://github.com/barcia/swibe/releases/tag/1.0.0-beta.4) - 2018-12-18
 ### Added
 - Add breakpoint feature
 - Auto close if screen width is bigger than breakpoint
-
 
 ## [1.0.0-beta.3](https://github.com/barcia/swibe/releases/tag/1.0.0-beta.3) - 2018-12-14
 ### Changed
@@ -56,17 +59,17 @@
 - Changed the name of `.css` file
 
 
-## 3.0.0
+## 0.3.0
 I rewrite the code from scratch again, but this time putting all UI settings,
 transitions, etc, in CSS3. Now the Swibe menu is great and works perfectly.
 :smiley:
 
 
-## 2.0.0
+## 0.2.0
 I started to see the light. The menu was coded from scratch in vanilla
 JavaScript, but with many settings and styles in JS... Bad thing. :sweat:
 
 
-## 1.0.0
+## 0.1.0
 Time ago were dark times... I used huge things like jQ***y to create a
 *overcoded* and inefficient menu. :smiling_imp:

@@ -1,5 +1,5 @@
 /**
- * Swibe 1.0.0-beta.4
+ * Swibe 1.0.0-beta.5
  * MIT License
  * https://github.com/barcia/swibe
  */
@@ -114,6 +114,7 @@ export default function Swibe(customConfig) {
 			this.element.style.transition = 'opacity ease-in-out, height step-start, width step-start';
 			this.element.style.transitionDuration = config.time + 'ms';
 			this.element.setAttribute('data-state', 'enabled');
+			document.body.style.overflow = 'hidden';
 			return true;
 		},
 		disable() {
@@ -123,6 +124,7 @@ export default function Swibe(customConfig) {
 			this.element.style.transition = 'opacity ease-in-out, height step-end, width step-end';
 			this.element.style.transitionDuration = config.time + 'ms';
 			this.element.setAttribute('data-state', 'disabled');
+			document.body.style.overflow = null;
 			return true;
 		}
 	};
