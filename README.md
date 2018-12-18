@@ -1,5 +1,5 @@
 # Swibe
-v1.0.0-beta.3
+v1.0.0-beta.4
 
 A simple slide menu in JS
 
@@ -57,11 +57,13 @@ new Swibe({
   state: "closed",
   width: 300, // px
   time: 300, // ms
+  breakpoint: undefined, // px
   shadowOpacity: 0.5, // Between 0 and 1
   zIndex: 999
 });
 ```
 
+If you put a `breakpoint`, the menu only work below the screen width that you set.
 
 
 ### User Interface

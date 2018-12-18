@@ -1,4 +1,10 @@
 # Changelog
+## [1.0.0-beta.4](https://github.com/barcia/swibe/releases/tag/1.0.0-beta.4) - 2018-12-18
+### Added
+- Add breakpoint feature
+- Auto close if screen width is bigger than breakpoint
+
+
 ## [1.0.0-beta.3](https://github.com/barcia/swibe/releases/tag/1.0.0-beta.3) - 2018-12-14
 ### Changed
 - Modify demo to load new JavaScript module
