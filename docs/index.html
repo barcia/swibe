@@ -112,6 +112,31 @@
 			color: hsla(0, 0%, 100%, 0.6);
 		}
 	</style>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				let request = new XMLHttpRequest();
+
+				request.open('GET', 'https://api.github.com/repos/barcia/swibe/tags', true);
+				request.onload = function () {
+
+				// Begin accessing JSON data here
+				let data = JSON.parse(this.response);
+
+					if (request.status >= 200 && request.status < 400) {
+						let tagName = data[0].name;
+						let versionLink = document.getElementById("versionLink");
+						versionLink.href = "https://github.com/barcia/swibe/releases/tag/" + tagName;
+						versionLink.title = "Version: " + tagName;
+						versionLink.innerText = tagName;
+					} else {
+						console.log('error: ' + request.status);
+					}
+				}
+
+				request.send();
+			})
+
+		</script>
 </head>
 	<body>
 
@@ -148,7 +173,7 @@
 
 
 		<footer class="footer">
-			<small>Created by <a href="https://barcia.gal" title="Iván Barcia's website">Iván Barcia</a> • <a href="https://github.com/barcia/swibe/releases/tag/1.0.0-beta.3" title="Version">v1.0.0-beta.3</a></small>
+			<small>Created by <a href="https://barcia.gal" title="Iván Barcia's website">Iván Barcia</a> • <a id="versionLink" target="_blank"></a></small>
 		</footer>
 	</body>
 </html>
