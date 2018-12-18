@@ -1,5 +1,5 @@
 /**
- * Swibe 1.0.0-beta.3
+ * Swibe 1.0.0-beta.4
  * MIT License
  * https://github.com/barcia/swibe
  */
@@ -12,6 +12,7 @@ export default function Swibe(customConfig) {
 		state: "closed",
 		width: 300, // px
 		time: 300, // ms
+		breakpoint: undefined, // px
 		shadowOpacity: 0.5, // Between 0 and 1
 		zIndex: 999
 	};
@@ -26,8 +27,24 @@ export default function Swibe(customConfig) {
 		// If all elements exists, init.
 		if (action.get()) {
 			action.init();
+			if (config.breakpoint) {
+				responsive.match(responsive.mediaQueryList);
+				responsive.mediaQueryList.addListener(responsive.match)
+			} else {
+				action.addListeners();
+			}
 		};
 	});
+
+
+
+	const responsive = {
+		mediaQueryList: window.matchMedia('(max-width: ' + config.breakpoint + 'px)'),
+		match(event) {
+			event.matches ? action.addListeners() : action.removeListeners();
+		}
+	}
+
 
 
 	const menu = {
@@ -64,6 +81,9 @@ export default function Swibe(customConfig) {
 		get() {
 			this.element = document.getElementById(config.trigger);
 			return (this.element) ? true : false;
+		},
+		tap() {
+			state ? action.close() : action.open();
 		}
 	};
 
@@ -187,21 +207,21 @@ export default function Swibe(customConfig) {
 				return false;
 			};
 		},
+		addListeners() {
+			trigger.element.addEventListener('click', trigger.tap, false);
+			document.addEventListener('touchstart', touch.tap, false);
+			document.addEventListener('touchmove', touch.slide, false);
+		},
+		removeListeners() {
+			trigger.element.removeEventListener('click', trigger.tap, false);
+			document.removeEventListener('touchstart', touch.tap, false);
+			document.removeEventListener('touchmove', touch.slide, false);
+		},
 		init() {
-
 			// Add basic styles to menu
 			menu.base();
 
-			// Add event to trigger
-			trigger.element.addEventListener('click', function () {
-				state ? action.close() : action.open();
-			}, false);
-
-			// Add touch events
-			document.addEventListener('touchstart', touch.tap, false);
-			document.addEventListener('touchmove', touch.slide, false);
-
-			// Initial status
+			// Set initial status
 			config.state == 'closed' ? action.close() : action.open();
 		},
 		open() {
