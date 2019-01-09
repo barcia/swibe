@@ -35,9 +35,13 @@
     "watch:js": "nodemon --watch ./swibe.js --exec 'npm run build:js'",
     "watch:docs": "npm run build:docs -- --watch",
     "server": "browser-sync start --server './docs/demo/' --browser 'firefox developer edition' --watch --files './docs/demo/**/*'",
-    "dev": "npm run clean && run-p watch:js watch:docs server"
+    "dev": "npm run clean && run-p watch:js watch:docs server",
+    "babel": "babel swibe.js --out-file swibe.es5.js --presets=@babel/preset-env"
   },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
     "browser-sync": "^2.26.3",
     "cpx": "^1.5.0",
     "nodemon": "^1.18.5",
