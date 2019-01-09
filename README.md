@@ -9,6 +9,7 @@ A simple slide menu in JS
 - [Issues](https://github.com/barcia/standarize/issues)
 - [Changelog](https://github.com/barcia/swibe/blob/master/CHANGELOG.md)
 
+> Swibe is not ES2015 compatible. You can build a compatible file executing `npm run babel`.
 
 
 ## Getting Started

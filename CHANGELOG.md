@@ -1,4 +1,8 @@
 # Changelog
+## [1.0.0](https://github.com/barcia/swibe/releases/tag/1.0.0) - 2019-01-09
+### Changed
+- Change folder structure
+
 ## [1.0.0-beta.5](https://github.com/barcia/swibe/releases/tag/1.0.0-beta.5) - 2018-12-19
 ### Added
 - Add A11Y features

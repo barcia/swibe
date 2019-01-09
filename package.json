@@ -20,32 +20,28 @@
     "swibe",
     "bramework"
   ],
-  "main": "swibe.min.js",
+  "main": "./dist/swibe.min.js",
   "files": [
-    "LICENSE",
-    "README.md",
-    "swibe.js",
-    "swibe.min.js"
+    "./dist/swibe.min.js"
   ],
   "scripts": {
-    "clean": "rm -rf swibe.min.js",
-    "build:js": "uglifyjs ./swibe.js --mangle --compress  --output ./swibe.min.js",
-    "build:docs": "cpx './swibe.min.js' docs/demo/",
-    "build": "run-s clean build:js build:docs",
-    "watch:js": "nodemon --watch ./swibe.js --exec 'npm run build:js'",
-    "watch:docs": "npm run build:docs -- --watch",
+    "clean": "rm -rf dist/*",
+    "uglify": "uglifyjs ./src/swibe.js --mangle --compress --output ./dist/swibe.min.js",
+    "babel": "babel ./src/swibe.js --out-file ./dist/swibe.es5.js --presets=@babel/preset-env",
+    "build": "npm run clean; npm run uglify && npm run docs",
+    "docs": "cpx './dist/swibe.min.js' docs/demo/",
+    "watch:js": "chokidar ./src/swibe.js --initial -c 'npm run uglify'",
+    "watch:docs": "npm run docs -- --watch",
     "server": "browser-sync start --server './docs/demo/' --browser 'firefox developer edition' --watch --files './docs/demo/**/*'",
-    "dev": "npm run clean && run-p watch:js watch:docs server",
-    "babel": "babel swibe.js --out-file swibe.es5.js --presets=@babel/preset-env"
+    "start": "npm run clean && npm run watch:js & npm run watch:docs & npm run server"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
     "browser-sync": "^2.26.3",
+    "chokidar-cli": "^1.2.1",
     "cpx": "^1.5.0",
-    "nodemon": "^1.18.5",
-    "npm-run-all": "^4.1.3",
     "uglify-es": "^3.3.9"
   }
 }
