@@ -1,5 +1,5 @@
 /**
- * Swibe 1.0.0
+ * Swibe 1.0.1
  * MIT License
  * https://github.com/barcia/swibe
  */

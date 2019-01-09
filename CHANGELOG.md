@@ -1,5 +1,5 @@
 # Changelog
-## [1.0.0](https://github.com/barcia/swibe/releases/tag/1.0.0) - 2019-01-09
+## [1.0.1](https://github.com/barcia/swibe/releases/tag/1.0.1) - 2019-01-09
 ### Changed
 - Change folder structure
 
