@@ -20,9 +20,9 @@
     "swibe",
     "bramework"
   ],
-  "main": "./dist/swibe.min.js",
+  "main": "dist/swibe.min.js",
   "files": [
-    "./dist/swibe.min.js"
+    "dist"
   ],
   "scripts": {
     "clean": "rm -rf dist/*",
