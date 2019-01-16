@@ -9,12 +9,28 @@ A simple slide menu in JS
 - [Issues](https://github.com/barcia/standarize/issues)
 - [Changelog](https://github.com/barcia/swibe/blob/master/CHANGELOG.md)
 
-> Swibe is not ES2015 compatible. You can build a compatible file executing `npm run babel`.
-
 
 ## Getting Started
 
-1. [Download the last release](https://github.com/barcia/swibe/releases/latest) or install it with [npm](https://www.npmjs.com/package/swibe):
+### Script
+1. [Download the last release](https://github.com/barcia/swibe/releases/latest):
+  ```html
+  <!-- Downloaded file -->
+  <script src="swibe.min.js"></script>
+
+  <!-- With UNPKG -->
+  <script src="https://unpkg.com/swibe"></script>
+  ```
+
+2. Start a Swibe menu instace with
+```js
+new Swibe.default();
+```
+
+### Module
+
+1. Install it with [npm](https://www.npmjs.com/package/swibe):
+
   ```js
   npm install swibe
   ```
@@ -28,10 +44,12 @@ A simple slide menu in JS
 ```js
 new Swibe();
 ```
+
+
  (See [config](https://github.com/barcia/swibe#configuration))
 
 
-4. Add a **trigger** and a **menu** items
+- Add a **trigger** and a **menu** items
     ```html
     <button id="swibe-menu-trigger">Menu</button>
     ```

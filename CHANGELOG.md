@@ -1,4 +1,14 @@
 # Changelog
+## [1.1.0](https://github.com/barcia/swibe/releases/tag/1.1.0) - 2019-01-16
+### Added
+- Option to add Swibe as script
+- WebPack
+- Some config files
+
+## [1.0.2](https://github.com/barcia/swibe/releases/tag/1.0.2) - 2019-01-11
+### Changed
+- Changed some package.json config
+
 ## [1.0.1](https://github.com/barcia/swibe/releases/tag/1.0.1) - 2019-01-09
 ### Changed
 - Change folder structure

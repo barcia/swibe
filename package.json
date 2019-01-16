@@ -1,6 +1,6 @@
 {
   "name": "swibe",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "license": "MIT",
   "description": "A simple swipe menu",
   "homepage": "http://barcia.github.io/swibe",
@@ -11,6 +11,24 @@
     "email": "ivan@barcia.gal",
     "url": "https://barcia.gal"
   },
+  "browser": "dist/swibe.min.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "webpack --mode production",
+    "watch": "webpack --mode development --watch",
+    "start": "webpack-dev-server --mode development"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-object-assign": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
+    "babel-loader": "^8.0.5",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
+  },
   "keywords": [
     "js",
     "javascript",
@@ -19,29 +37,5 @@
     "swipe",
     "swibe",
     "bramework"
-  ],
-  "main": "dist/swibe.min.js",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "clean": "rm -rf dist/*",
-    "uglify": "uglifyjs ./src/swibe.js --mangle --compress --output ./dist/swibe.min.js",
-    "babel": "babel ./src/swibe.js --out-file ./dist/swibe.es5.js --presets=@babel/preset-env",
-    "build": "npm run clean; npm run uglify && npm run docs",
-    "docs": "cpx './dist/swibe.min.js' docs/demo/",
-    "watch:js": "chokidar ./src/swibe.js --initial -c 'npm run uglify'",
-    "watch:docs": "npm run docs -- --watch",
-    "server": "browser-sync start --server './docs/demo/' --browser 'firefox developer edition' --watch --files './docs/demo/**/*'",
-    "start": "npm run clean && npm run watch:js & npm run watch:docs & npm run server"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.2.3",
-    "browser-sync": "^2.26.3",
-    "chokidar-cli": "^1.2.1",
-    "cpx": "^1.5.0",
-    "uglify-es": "^3.3.9"
-  }
+  ]
 }
