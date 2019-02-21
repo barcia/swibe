@@ -7,28 +7,25 @@ A simple slide menu in JS
 - [Web](http://barcia.github.io/standarize)
 - [Repository](https://github.com/barcia/standarize)
 - [Issues](https://github.com/barcia/standarize/issues)
-- [Changelog](https://github.com/barcia/swibe/blob/master/CHANGELOG.md)
+- [Changelog](https://github.com/barcia/swibe/blob/master/CHANGELOG)
 
 
 ## Getting Started
 
-### Script
-1. [Download the last release](https://github.com/barcia/swibe/releases/latest):
-  ```html
-  <!-- Downloaded file -->
-  <script src="swibe.min.js"></script>
+### 1. Load Swibe
 
-  <!-- With UNPKG -->
-  <script src="https://unpkg.com/swibe"></script>
-  ```
+#### Script
+```html
+<!-- Downloaded file -->
+<script src="swibe.min.js"></script>
 
-2. Start a Swibe menu instace with
-```js
-new Swibe.default();
+<!-- With UNPKG -->
+<script src="https://unpkg.com/swibe"></script>
 ```
 
-### Module
+> [Download the last release](https://github.com/barcia/swibe/releases/latest)
 
+#### Module
 1. Install it with [npm](https://www.npmjs.com/package/swibe):
 
   ```js
@@ -37,35 +34,39 @@ new Swibe.default();
 
 2. Import *swibe.min.js* in your code.
   ```js
-  import Swibe from './swibe.min.js';
+  import Swibe from 'swibe';
   ```
 
-3. Start a Swibe menu instace with
+
+
+## 2. Start a instace
+Start a Swibe menu instace with:
+
 ```js
 new Swibe();
 ```
 
 
- (See [config](https://github.com/barcia/swibe#configuration))
+> See [config](https://github.com/barcia/swibe#configuration)
 
 
-- Add a **trigger** and a **menu** items
-    ```html
-    <button id="swibe-menu-trigger">Menu</button>
-    ```
+Add a **trigger** and a **menu** items
+```html
+<button id="swibe-menu-trigger">Menu</button>
+```
 
-    ```html
-    <nav id="swibe-menu">
-      <ul>
-        <li><a>Item</a></li>
-        <li><a>Item</a></li>
-        <li><a>Item</a></li>
-        <li><a>Item</a></li>
-      </ul>
-    </nav>
-    ```
+```html
+<nav id="swibe-menu">
+  <ul>
+    <li><a>Item</a></li>
+    <li><a>Item</a></li>
+    <li><a>Item</a></li>
+    <li><a>Item</a></li>
+  </ul>
+</nav>
+```
 
-    > You can see this example working in [demo.html](https://github.com/barcia/swibe/blob/master/docs/demo/index.html)
+> You can see this example working in [demo.html](https://github.com/barcia/swibe/blob/master/docs/demo/index.html)
 
 
 
