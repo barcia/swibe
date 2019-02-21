@@ -1,5 +1,5 @@
 /**
- * Swibe 1.2.0
+ * Swibe 1.2.1
  * MIT License
  * https://github.com/barcia/swibe
  */
@@ -84,6 +84,7 @@ export default function Swibe(customConfig) {
 			menu.close();
 			trigger.close();
 			shadow.close();
+			document.body.style.overflow = ''; //IE11 Fallback
 			document.body.style.overflow = null;
 			state = false;
 			return true;
