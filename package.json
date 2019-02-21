@@ -1,33 +1,28 @@
 {
   "name": "swibe",
-  "version": "1.1.0",
+  "version": "1.2.1",
   "license": "MIT",
   "description": "A simple swipe menu",
   "homepage": "http://barcia.github.io/swibe",
   "repository": "https://github.com/barcia/swibe",
   "bugs": "https://github.com/barcia/swibe/issues",
-  "author": {
-    "name": "Iván Barcia",
-    "email": "ivan@barcia.gal",
-    "url": "https://barcia.gal"
-  },
+  "author": "Iván Barcia <ivan@barcia.gal> (https://barcia.gal)",
   "browser": "dist/swibe.min.js",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "webpack --mode production",
-    "watch": "webpack --mode development --watch",
-    "start": "webpack-dev-server --mode development"
+    "build": "rollup -c",
+    "start": "rollup -c --watch",
+    "prepare": "npm run build"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.2",
+    "@babel/core": "^7.3.3",
     "@babel/plugin-transform-object-assign": "^7.2.0",
-    "@babel/preset-env": "^7.2.3",
-    "babel-loader": "^8.0.5",
-    "webpack": "^4.28.4",
-    "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
+    "@babel/preset-env": "^7.3.1",
+    "rollup": "^1.2.2",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-terser": "^4.0.4"
   },
   "keywords": [
     "js",
@@ -36,6 +31,7 @@
     "slide",
     "swipe",
     "swibe",
+    "responsive",
     "bramework"
   ]
 }
