@@ -124,6 +124,7 @@ new Swibe({
 Developed by Iván Barcia
 [Web](https://barcia.gal) · [Twitter](http://www.twitter.com/bartzia) · [GitHub](http://www.github.com/barcia)
 
+Project tested on [BrowserStack](https://www.browserstack.com/)
 
 
 ## License
