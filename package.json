@@ -1,6 +1,6 @@
 {
   "name": "swibe",
-  "version": "1.2.2",
+  "version": "2.0.0-beta.1",
   "license": "MIT",
   "description": "A simple swipe menu",
   "homepage": "http://barcia.github.io/swibe",
@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "start": "rollup -c --watch",
+    "start": "rollup -c -m --watch",
     "prepare": "npm run build"
   },
   "devDependencies": {

@@ -4,6 +4,10 @@
  * MIT License
  */
 
+ html, body {
+	 min-height: 100vh;
+ }
+
 #swibe-menu-trigger {
   height: 40px;
   width: 80px;
