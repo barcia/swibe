@@ -1,12 +1,12 @@
 {
   "name": "swibe",
-  "version": "2.0.0-beta.2",
+  "version": "2.0.0",
   "license": "MIT",
   "description": "A simple swipe menu",
   "homepage": "http://barcia.github.io/swibe",
   "repository": "https://github.com/barcia/swibe",
   "bugs": "https://github.com/barcia/swibe/issues",
-  "author": "Iván Barcia <ivan@barcia.gal> (https://barcia.gal)",
+  "author": "Iván Barcia <ivan@barcia.dev> (https://barcia.dev)",
   "browser": "dist/swibe.min.js",
   "files": [
     "dist"
@@ -17,9 +17,9 @@
     "prepare": "npm run build"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.7",
-    "@babel/plugin-transform-object-assign": "^7.7.4",
-    "@babel/preset-env": "^7.7.7",
+    "@babel/core": "^7.10.3",
+    "@babel/plugin-transform-object-assign": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
     "rollup": "^1.27.14",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-terser": "^5.1.3"

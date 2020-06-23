@@ -1,9 +1,3 @@
-# Temporary and testing files
-temp/
-temp.*
-test/
-test.*
-
 # Dependency directories
 node_modules/
 bower_components/

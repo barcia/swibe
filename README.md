@@ -8,7 +8,21 @@ A simple slide menu in JS
     npm install swibe
     ```
 
-2. Import Swibe in your code, create a new instance and initialize it.
+2. Add the basic markup
+    ```html
+    <button id="swibe-menu-trigger">Menu</button>
+
+    <nav id="swibe-menu">
+      <ul>
+        <li><a>Item</a></li>
+        <li><a>Item</a></li>
+        <li><a>Item</a></li>
+        <li><a>Item</a></li>
+      </ul>
+    </nav>
+    ```
+
+3. Import Swibe in your code, create a new instance and initialize it.
     ```js
     import Swibe from 'swibe';
 
@@ -27,6 +41,7 @@ You can instead load it into the HTML.
 <script src="https://unpkg.com/swibe"></script>
 ```
 
+You can see a basic working demo in `/docs/index.html`
 
 ## API
 
