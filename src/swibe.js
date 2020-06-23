@@ -1,9 +1,3 @@
-/**
- * Swibe 2.0.0-beta.1
- * MIT License
- * https://github.com/barcia/swibe
- */
-
 import gre from './gre'
 
 
@@ -44,8 +38,10 @@ export default class Swibe {
 
 		if (Menu.element && Trigger.element) {
 
-			// Init shadow
+			// Init basic
 			Shadow.init(this);
+			Trigger.element.addEventListener('click', () => this.toggle() )
+			Shadow.element.addEventListener('click', () => this.close() )
 
 			// Responsive handler or enable
 			if (this.breakpoint) {
@@ -71,8 +67,6 @@ export default class Swibe {
 
 	_enable() {
 		if (typeof this.enableCallback === 'function') { this.enableCallback() }
-		Trigger.element.addEventListener('click', () => this.toggle() )
-		Shadow.element.addEventListener('click', () => this.close() )
 		document.addEventListener('touchstart', event => Interaction.touchstart(event))
 		document.addEventListener('touchmove', event => this._tactileHandlerAction(event))
 	}
@@ -82,8 +76,6 @@ export default class Swibe {
 	_disable() {
 		this.close()
 		if (typeof this.disableCallback === 'function') { this.disableCallback() }
-		// Trigger.element.removeEventListener('click', () => this.toggle())
-		// Shadow.element.removeEventListener('click', () => this.close())
 		document.removeEventListener('touchstart', event => Interaction.touchstart(event))
 		document.removeEventListener('touchmove', event => this._tactileHandlerAction(event))
 	}
